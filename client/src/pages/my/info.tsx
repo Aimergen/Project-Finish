@@ -26,7 +26,7 @@ const Info = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/users/${currentUser?._id}`)
+      .get(process.env.API_URL + `/${currentUser?._id}`)
       .then((res) => {
         setUser(res.data);
       })
