@@ -94,7 +94,9 @@ const Index: FC<Props> = ({ data }) => {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/products?category=${product.option}`)
+      .get(
+        `process.env.NEXT_PUBLIC_API_URL/products?category=${product.option}`
+      )
       .then((res) => {
         setCategoryProducts(res.data);
         setIsLoading(false);
