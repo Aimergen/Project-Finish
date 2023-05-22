@@ -19,6 +19,7 @@ import { Pagination } from "flowbite-react";
 import Three from "@/components/Three";
 import HomeNavbar from "@/components/Homepage/HomeNavbar";
 import SpecialCategory from "@/components/SpecialCategory";
+import FacebookCustomerChat from "@/components/FacebookCustomerChat";
 
 const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -65,6 +66,7 @@ export default function Home({ data }: { data: IProduct[] }) {
         <ImageCard />
         {/* </div>
       <Footer /> */}
+        <FacebookCustomerChat />
       </Layout>
     </>
   );
