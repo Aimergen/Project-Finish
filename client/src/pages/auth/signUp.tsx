@@ -20,10 +20,10 @@ export default function signup() {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    // axios.post(process.env.API_URL + "/otp/signin", user.email).then((res) => {
+    // axios.post(process.env.NEXT_PUBLIC_API_URL + "/otp/signin", user.email).then((res) => {
     //   const otp = window.prompt("Your OTP?");
     //   axios
-    //     .post(process.env.API_URL + "/otp/signin/verify", (user.email, otp))
+    //     .post(process.env.NEXT_PUBLIC_API_URL + "/otp/signin/verify", (user.email, otp))
     //     .then((res) => {
     //       localStorage.setItem("token", res.data);
     //       toast.success("Амжилттай нэвтэрлээ!");
@@ -31,7 +31,7 @@ export default function signup() {
     //     });
     // });
     axios
-      .post(process.env.API_URL + "/signup", user)
+      .post(process.env.NEXT_PUBLIC_API_URL + "/signup", user)
       .then((res) => {
         console.log(res.data);
         router.push("/auth/signin");

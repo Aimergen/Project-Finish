@@ -13,7 +13,9 @@ import { FC, useEffect, useState } from "react";
 import moment from "moment";
 
 export const getStaticPaths = async () => {
-  const response = await fetch(process.env.API_URL + "/products/idm/id");
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_API_URL + "/products/idm/id"
+  );
   const data = await response.json();
 
   const paths = data.map((_id: string) => ({
@@ -29,7 +31,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: GetServerSidePropsContext) => {
   const response = await fetch(
-    process.env.API_URL + `/products/${params?._id}`
+    process.env.NEXT_PUBLIC_API_URL + `/products/${params?._id}`
   );
   const data = await response.json();
 
@@ -45,7 +47,7 @@ interface Props {
 // const [myProducts,setMyProducts]= useState();
 // useEffect(() => {
 //   axios
-//     .get(process.env.API_URL + `/products/ids/${currentUser?._id}`)
+//     .get(process.env.NEXT_PUBLIC_API_URL + `/products/ids/${currentUser?._id}`)
 //     .then((res) => {
 //       setMyProducts(res.data);
 //       console.log("my product", myProducts);
@@ -66,7 +68,7 @@ const Index: FC<Props> = ({ data }) => {
     console.log(wishlist);
     wishlist &&
       axios
-        .post(process.env.API_URL + "/wishlist", product)
+        .post(process.env.NEXT_PUBLIC_API_URL + "/wishlist", product)
         .then((res) => {
           console.log(res.data);
         })
@@ -77,7 +79,7 @@ const Index: FC<Props> = ({ data }) => {
   }
   const deleteWishlist = (productId: string) => {
     axios
-      .delete(process.env.API_URL + `/wishlist/${productId}`, {
+      .delete(process.env.NEXT_PUBLIC_API_URL + `/wishlist/${productId}`, {
         data: { userId: product.userId },
       })
       .then((response) => {

@@ -4,7 +4,6 @@ import Image from "next/image";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "@/components/Footer";
 import ImageCard from "@/components/ImageCard";
-import Reklam from "@/components/Reklam";
 import Category from "@/components/Category";
 import Layout from "@/components/Layout";
 import Carousel from "@/components/SpecialCategory";
@@ -66,7 +65,7 @@ export default function Home({ data }: { data: IProduct[] }) {
         <ImageCard />
         {/* </div>
       <Footer /> */}
-        <FacebookCustomerChat />
+        {/* <FacebookCustomerChat /> */}
       </Layout>
     </>
   );
