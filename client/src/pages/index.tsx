@@ -1,27 +1,19 @@
 import ProductCard from "@/components/ProductCard";
 import { Inter } from "next/font/google";
-import Image from "next/image";
-import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Homepage/Footer";
 import ImageCard from "@/components/ImageCard";
-import Category from "@/components/Category";
-import Layout from "@/components/Layout";
-import Carousel from "@/components/SpecialCategory";
 import axios from "axios";
 import { GetServerSidePropsContext } from "next";
 import { IProduct } from "@/interfaces/product";
 import { createContext, useEffect, useState } from "react";
 import { useQuery } from "@/hooks/useQuery";
 import { useRouter } from "next/router";
-import { Select } from "@/components/ui/Select";
-import { Pagination } from "flowbite-react";
 import Three from "@/components/Three";
 import HomeNavbar from "@/components/Homepage/HomeNavbar";
 import SpecialCategory from "@/components/SpecialCategory";
 import FacebookCustomerChat from "@/components/FacebookCustomerChat";
 import Reason from "@/components/Reason";
 
-const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
   const { ordering = "", limit = 15, search = "", page = 0 } = query;
@@ -41,15 +33,14 @@ export default function Home({ data }: { data: IProduct[] }) {
   const { query } = router;
   const { ordering = "", limit = 15, search = "", page = 0 } = query;
   const { addQuery } = useQuery();
- 
 
   return (
     <>
       {/* <Layout> */}
-        <HomeNavbar />
+      <HomeNavbar />
       <Three />
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <SpecialCategory/>
+        <SpecialCategory />
 
         <div className="bg-white my-24">
           <h2 className="font-bold text-2xl my-10">Сүүлд нэмэгдсэн</h2>
@@ -60,12 +51,11 @@ export default function Home({ data }: { data: IProduct[] }) {
             ))}
           </div>
         </div>
-
         <ImageCard />
-        <Reason/>
-        </div>
+        <Reason />
+      </div>
       <Footer />
-        {/* <FacebookCustomerChat /> */}
+      <FacebookCustomerChat />
       {/* </Layout> */}
     </>
   );
