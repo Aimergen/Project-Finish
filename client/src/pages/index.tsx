@@ -55,7 +55,7 @@ export default function Home({ data }: { data: IProduct[] }) {
         <Reason />
       </div>
       <Footer />
-      <FacebookCustomerChat />
+      {/* <FacebookCustomerChat /> */}
       {/* </Layout> */}
     </>
   );
