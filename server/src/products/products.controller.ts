@@ -80,6 +80,12 @@ export class ProductsController {
       case 'titleDesc':
         sort = '-name';
         break;
+      case 'priceAsc':
+        sort = 'price';
+        break;
+      case 'priceDesc':
+        sort = '-price';
+        break;
       default:
         sort = '-released';
         break;

@@ -65,45 +65,6 @@ const Info = () => {
     <Aside>
       <section className=" rounded-lg gap-5 bg-white p-5">
         <div className="flex flex-col items-center">
-          {/* <div
-              style={{
-                width: "100%",
-                height: "100%",
-                backgroundColor: "#ccc",
-                overflow: "hidden",
-                border: "1px solid #f0f0f0",
-                position: "relative",
-              }}
-            >
-              <Image
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-                width={1000}
-                height={100}
-                src={
-                  imageUrl ||
-                  "https://www.rallis.com/Upload/Images/thumbnail/Product-inside.png"
-                }
-                alt="add product image"
-              />
-              <input
-                type="file"
-                onChange={uploadImg}
-                multiple
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  top: 0,
-                  opacity: 0,
-                  cursor: "pointer",
-                }}
-              />
-            </div> */}
           <div
             style={{
               maxWidth: "150px",

@@ -9,8 +9,6 @@ import React, { ChangeEvent, useState } from "react";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
-import Tilt from "react-parallax-tilt";
-import { kMaxLength } from "buffer";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signup() {
@@ -116,7 +114,6 @@ export default function Signup() {
           />
         </div>
         <div className="bg-gray-50 flex flex-col justify-center">
-          <Tilt transitionSpeed={10000}>
             <form
               className="max-w-[400px] w-full mx-auto rounded-lg bg-gray-200 p-8 px-8"
               onSubmit={handleSubmit}
@@ -192,7 +189,6 @@ export default function Signup() {
                 </Link>
               </p>
             </form>
-          </Tilt>
         </div>
       </div>
       <Footer />

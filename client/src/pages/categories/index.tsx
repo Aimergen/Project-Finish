@@ -70,13 +70,13 @@ export default function Category({ data }: { data: IProduct }) {
         setProducts(res.data);
       });
   }, [category, limit, ordering, products, search]);
-  useEffect(() => {
-    axios
-      .get(process.env.NEXT_PUBLIC_API_URL + `/products?search=ki&limit=1`)
-      .then((res) => {
-        console.log("category data", res.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(process.env.NEXT_PUBLIC_API_URL + `/products?search=ki&limit=1`)
+  //     .then((res) => {
+  //       console.log("category data", res.data);
+  //     });
+  // }, []);
 
   useEffect(() => {
     axios.get(process.env.NEXT_PUBLIC_API_URL + "/categories").then((res) => {
@@ -223,9 +223,10 @@ export default function Category({ data }: { data: IProduct }) {
                     { value: "", label: "Sort..." },
                     { value: "old", label: "Oldest" },
                     { value: "young", label: "Newest" },
-                    { value: "imdbRatingDesc", label: "Most popular" },
                     { value: "titleAsc", label: "A-Z" },
                     { value: "titleDesc", label: "Z-A" },
+                    { value: "priceAsc", label: "үнэ буурахаар" },
+                    { value: "priceDesc", label: "үнэ өсөхөөр" },
                   ]}
                   onChange={(e) => {
                     addQuery({ ordering: e.target.value });

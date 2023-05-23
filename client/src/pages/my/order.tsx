@@ -24,7 +24,7 @@ const Order = () => {
   console.log("order", myOrders);
   return (
     <Aside>
-      <div className="bg-white rounded-lg p-4">
+      <div className="bg-white rounded-lg p-4 min-h-[200px]">
       <h2 className="font-bold text-2xl">My orders</h2>
       <div className="">
         {myOrders.map((item: any) => (

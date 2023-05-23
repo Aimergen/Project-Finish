@@ -23,7 +23,7 @@ export default function Three() {
         </div>
       <div className="grid grid-cols-1 items-center md:grid-cols-2">
         <div className="col-span-1 flex justify-center items-center">
-          <div className="flex flex-col max-w-lg mt-36 md:mt-36 md:mb-64">
+          <div className="flex flex-col max-w-lg mt-36 md:mt-36 md:mb-64 py-10">
             <h2 className="font-semi-bold text-8xl my-5 text-[#ff598f]">
               bag 3d model
             </h2>
