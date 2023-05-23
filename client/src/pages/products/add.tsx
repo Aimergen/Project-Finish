@@ -110,7 +110,7 @@ export default function Example() {
                 height={100}
                 src={
                   imageUrl ||
-                  "https://www.rallis.com/Upload/Images/thumbnail/Product-inside.png"
+                  "/images/placeholder.png"
                 }
                 alt="add product image"
               />

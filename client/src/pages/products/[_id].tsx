@@ -95,7 +95,7 @@ const Index: FC<Props> = ({ data }) => {
   useEffect(() => {
     axios
       .get(
-        `process.env.NEXT_PUBLIC_API_URL/products?category=${product.option}`
+        `${process.env.NEXT_PUBLIC_API_URL}/products?category=${product.option}`
       )
       .then((res) => {
         setCategoryProducts(res.data);

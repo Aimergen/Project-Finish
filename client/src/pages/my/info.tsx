@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { IUser } from "@/interfaces/user";
 import MyModal from "@/components/Modal";
 import 'react-toastify/dist/ReactToastify.css';
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 
 const Info = () => {
@@ -148,19 +149,19 @@ const Info = () => {
               <div className="flex items-center justify-between">
                 <Link href={`/products/put/${product._id}`} key={product._id}>
                   <button
-                    className="bg-[#ff598f] px-4 rounded-md"
+                    className="bg-[#ff598f] p-3 rounded-md"
                     type="button"
                   >
-                    zasah
+                    <AiFillEdit/>
                   </button>
                 </Link>
 
                 <button
-                  className="bg-[rgba(0,0,0,.2)] px-4 rounded-md cursor-pointer"
+                  className="bg-[rgba(0,0,0,.2)] p-3 rounded-md cursor-pointer"
                   type="button"
                   onClick={() => deleteProduct(product._id)}
                 >
-                  delete
+                  <AiFillDelete/>
                 </button>
               </div>
             </div>

@@ -36,14 +36,12 @@ export default function Navbar() {
   const { currentuser }: any = useCurrentUser();
   const placeholder = ` ${count} бараа байна`;
   useEffect(() => {
-    axios
-      .get(process.env.NEXT_PUBLIC_API_URL + "/products/all/count")
-      .then((res) => {
-        setCount(res.data);
-      });
+    axios.get( process.env.NEXT_PUBLIC_API_URL + "/products/all/count").then((res) => {
+      setCount(res.data);
+    });
   }, [count]);
   useEffect(() => {
-    axios.get(process.env.NEXT_PUBLIC_API_URL + "/categories").then((res) => {
+    axios.get( process.env.NEXT_PUBLIC_API_URL + "/categories").then((res) => {
       setCategory(res.data);
     });
   }, []);
@@ -162,7 +160,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div>
+              <div className="max-sm:hidden">
                 <ul className="flex max-w-[1299px] items-center gap-10 mx-auto text-black text-xs-medium py-5 relative">
                   {category.map((link: any, index) => {
                     // const isFull = link.sublinks?.length >= 2;

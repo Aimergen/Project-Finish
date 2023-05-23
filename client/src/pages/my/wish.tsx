@@ -25,7 +25,6 @@ const Wish = () => {
         console.log(err);
       });
   },[]);
-  console.log("wish",myWishlist)
   return (
     <Aside>
       <div>
@@ -35,7 +34,7 @@ const Wish = () => {
               Таны хадгалсан
             </h2>
 
-            <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
+            <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8 min-h-[200px]">
             {myWishlist?.map((product) => (
               <ProductCard product={product} key={product._id} />
             ))}

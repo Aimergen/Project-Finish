@@ -19,6 +19,7 @@ import Three from "@/components/Three";
 import HomeNavbar from "@/components/Homepage/HomeNavbar";
 import SpecialCategory from "@/components/SpecialCategory";
 import FacebookCustomerChat from "@/components/FacebookCustomerChat";
+import Reason from "@/components/Reason";
 
 const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -50,8 +51,8 @@ export default function Home({ data }: { data: IProduct[] }) {
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <SpecialCategory/>
 
-        <div className="bg-white">
-          <h2 className="font-bold text-2xl">Сүүлд нэмэгдсэн</h2>
+        <div className="bg-white my-24">
+          <h2 className="font-bold text-2xl my-10">Сүүлд нэмэгдсэн</h2>
 
           <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
             {products.map((product) => (
@@ -61,6 +62,7 @@ export default function Home({ data }: { data: IProduct[] }) {
         </div>
 
         <ImageCard />
+        <Reason/>
         </div>
       <Footer />
         {/* <FacebookCustomerChat /> */}
