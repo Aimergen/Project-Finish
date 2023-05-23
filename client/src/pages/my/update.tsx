@@ -5,6 +5,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { IUser } from "@/interfaces/user";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Info = () => {
   const { currentUser, setCurrentUser } = useCurrentUser();

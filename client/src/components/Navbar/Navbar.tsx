@@ -132,7 +132,7 @@ export default function Navbar() {
                     }}
                   />
 
-                  <Link href={"/products/add"}>
+                  <Link href={"/my/wish"}>
                     <button
                       type="button"
                       className="rounded-full text-black hover:pb-5 text-lg p-3"

@@ -4,4 +4,8 @@ export class CreateOTPDto {
   @IsNotEmpty()
   @IsEmail()
   email: string;
+
+  password: string;
+
+  repassword: string;
 }

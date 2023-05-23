@@ -7,6 +7,8 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { IOption, IProduct } from "@/interfaces/product";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function update() {
   // eslint-disable-next-line react-hooks/rules-of-hooks

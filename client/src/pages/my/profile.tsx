@@ -23,7 +23,8 @@ interface AsideBarProps {
 
 const Aside: FC<AsideBarProps> = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const { currentUser, setCurrentUser }: any = useCurrentUser();
+  const { currentUser, setCurrentUser } = useCurrentUser();
+
 
   const removeToken = () => {
     localStorage.removeItem("token");

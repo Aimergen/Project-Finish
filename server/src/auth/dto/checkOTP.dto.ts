@@ -9,4 +9,8 @@ export class CheckOTPDto {
   @Min(100000)
   @Max(1000000 - 1)
   otp: number;
+
+  password: string;
+
+  repassword: string;
 }

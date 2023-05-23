@@ -31,14 +31,14 @@ export class AuthController {
 
     return this.authService.signup(signupDto);
   }
-  @Post('/otp/signin')
+  @Post('/otp/signup')
   siginOTP(@Body() createOTPDto: CreateOTPDto) {
     console.log(createOTPDto);
 
     return this.authService.createOTP(createOTPDto);
   }
 
-  @Post('/otp/signin/verify')
+  @Post('/otp/signup/verify')
   siginOTPConfirm(@Body() checkOTPDto: CheckOTPDto) {
     return this.authService.verifyOTP(checkOTPDto);
   }

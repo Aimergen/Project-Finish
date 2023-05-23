@@ -2,7 +2,7 @@ import ProductCard from "@/components/ProductCard";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import Navbar from "../components/Navbar/Navbar";
-import Footer from "@/components/Footer";
+import Footer from "../components/Homepage/Footer";
 import ImageCard from "@/components/ImageCard";
 import Category from "@/components/Category";
 import Layout from "@/components/Layout";
@@ -23,10 +23,10 @@ import FacebookCustomerChat from "@/components/FacebookCustomerChat";
 const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
-  const { ordering = "", limit = 25, search = "", page = 0 } = query;
+  const { ordering = "", limit = 15, search = "", page = 0 } = query;
   const response = await axios.get(
     process.env.NEXT_PUBLIC_API_URL +
-      `/products?limit=12&search=${search}&ordering${ordering}`
+      `/products?limit=${limit}&search=${search}&ordering${ordering}`
   );
   const { data } = response;
   return {
@@ -38,17 +38,17 @@ export default function Home({ data }: { data: IProduct[] }) {
   const products = data;
   const router = useRouter();
   const { query } = router;
-  const { ordering = "", limit = 25, search = "", page = 0 } = query;
+  const { ordering = "", limit = 15, search = "", page = 0 } = query;
   const { addQuery } = useQuery();
  
 
   return (
     <>
-      <Layout>
-        {/* <HomeNavbar />
+      {/* <Layout> */}
+        <HomeNavbar />
       <Three />
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8"> */}
-        {/* <SpecialCategory/> */}
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <SpecialCategory/>
 
         <div className="bg-white">
           <h2 className="font-bold text-2xl">Сүүлд нэмэгдсэн</h2>
@@ -61,10 +61,10 @@ export default function Home({ data }: { data: IProduct[] }) {
         </div>
 
         <ImageCard />
-        {/* </div>
-      <Footer /> */}
+        </div>
+      <Footer />
         {/* <FacebookCustomerChat /> */}
-      </Layout>
+      {/* </Layout> */}
     </>
   );
 }

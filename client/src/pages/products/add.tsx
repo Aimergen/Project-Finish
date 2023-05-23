@@ -6,25 +6,24 @@ import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { IOption } from "@/interfaces/product";
 import { toast } from "react-toastify";
+import MyModal from "@/components/Modal";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Example() {
   const { currentUser } = useCurrentUser();
   if (!currentUser) {
-    return <>Ta nevtreegui baina!</>;
+    return <MyModal/>;
   }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const [imageUrl, setImageUrl] = useState("");
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [category, setCategory] = useState([]);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [subCategories, setSubCategories] = useState<IOption[]>([]);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     axios.get(process.env.NEXT_PUBLIC_API_URL + "/categories").then((res) => {
       setCategory(res.data);
     });
   }, [category, setCategory]);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [addProduct, setAddProduct] = useState({
     productImageSrc: "",
     brand: "",

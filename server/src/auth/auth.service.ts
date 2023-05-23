@@ -85,13 +85,13 @@ export class AuthService {
       this.removeOTP(token);
       throw new HttpException('OTP is expired', HttpStatus.BAD_REQUEST);
     }
+    return otp
+    // let user = await this.usersService.findOneByEmail(email);
 
-    let user = await this.usersService.findOneByEmail(email);
-
-    if (!user) user = await this.usersService.create({ email });
-    this.removeOTP(token);
-    const payload = { sub: user };
-    return this.jwtService.sign(payload);
+    // if (!user) user = await this.usersService.create({ email });
+    // this.removeOTP(token);
+    // const payload = { sub: user };
+    // return this.jwtService.sign(payload);
   }
 
   isOTPExpired(otp: Otp): boolean {

@@ -1,6 +1,7 @@
 import { useCurrentUser } from "@/components/CurretnUserProvider";
 import Footer from "@/components/Footer";
 import Layout from "@/components/Layout";
+import MyModal from "@/components/Modal";
 import Navbar from "@/components/Navbar/Navbar";
 import Three from "@/components/Three";
 import MyThreeComponent from "@/components/Three/three.dynamic";
@@ -43,6 +44,9 @@ interface Props {
 
 export default function Order({ data }: { data: any }) {
   const { currentUser } = useCurrentUser();
+  if (!currentUser) {
+    return <MyModal/>;
+  }
   const order = data;
   const [addOrder, setAddOrder] = useState({
     firstName: "",

@@ -39,7 +39,7 @@ export const CurrentUserProvider: FC<CurrentUserProviderProps> = (props) => {
         console.log("user-iig set hiilee..", res.data);
       })
       .catch((e) => {
-        console.error(e);
+        console.error('current',e);
         setCurrentUser(undefined);
       });
   }, []);
