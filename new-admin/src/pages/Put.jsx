@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components";
 import { useCrud } from "../hooks/useCrud";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const Add = () => {
+const Put = () => {
   const { items: categories } = useCrud("categories");
   const [subCategories, setSubCategories] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
+  const [product, setProduct] = useState("");
+  const a = useParams();
+  const { id } = a;
+  console.log("id", id);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/products/${id}`)
+      .then((res) => {
+        setProduct(res.data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   const uploadImg = (e) => {
     const fd = new FormData();
@@ -23,7 +36,7 @@ const Add = () => {
       });
   };
 
-  const [addProduct, setAddProduct] = useState({
+  const [newProduct, setNewProduct] = useState({
     productImageSrc: "",
     brand: "",
     category: "",
@@ -40,8 +53,8 @@ const Add = () => {
   });
 
   const handleChange = (e) => {
-    setAddProduct({
-      ...addProduct,
+    setNewProduct({
+      ...newProduct,
       [e.target.name]: e.target.value,
       productImageSrc: imageUrl,
     });
@@ -56,29 +69,30 @@ const Add = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("product:", newProduct);
     axios
-      .post("http://localhost:8000/products/add", addProduct)
+      .patch(`http://localhost:8000/products/${product._id}`, product)
       .then((res) => {
-        console.log(res.data);
-        toast.success("amjilttai nemegdlee");
+        console.log("Product updated successfully:", res.data);
+        toast.success("амжилттай шинэчиллээ.");
       })
       .catch((err) => {
-        console.log(err);
-        toast.error("baraa nemehed aldaa garlaa");
+        console.error("Error updating product:", err);
+        toast.success("шинэчилэхэд алдаа гарлаа");
       });
   };
+  console.log("product", product);
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <div className="flex items-center justify-between">
-        <Header category="Page" title="Product add" />
+        <Header category="Page" title="Product update" />
       </div>
       <div className="container max-w-xl">
         <form onSubmit={handleSubmit}>
           <div className=" gap-5">
             <div
               style={{
-                borderRadius: "20px",
+                borderRadius: "50px",
 
                 width: "100%",
                 height: "100%",
@@ -94,10 +108,7 @@ const Add = () => {
                   height: "100%",
                   objectFit: "cover",
                 }}
-                src={
-                  imageUrl ||
-                  "https://www.rallis.com/Upload/Images/thumbnail/Product-inside.png"
-                }
+                src={imageUrl || product.productImageSrc}
                 alt="add product image"
               />
               <input
@@ -123,6 +134,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <select
+                value={product?.category}
                 onChange={(e) => handleChange(e)}
                 id="category"
                 name="category"
@@ -144,6 +156,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <select
+                value={product?.option}
                 onChange={(e) => handleChange(e)}
                 id="option"
                 name="option"
@@ -165,6 +178,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <select
+                value={product?.productState}
                 onChange={(e) => handleChange(e)}
                 id="productState"
                 name="productState"
@@ -185,6 +199,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <input
+                value={product?.brand}
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="brand"
@@ -201,6 +216,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <input
+                value={product?.size}
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="size"
@@ -217,7 +233,8 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <input
-                //   onChange={(e) => handleChange(e)}
+                value={product?.name}
+                onChange={(e) => handleChange(e)}
                 type="text"
                 name="name"
                 id="street-address"
@@ -233,6 +250,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <input
+                value={product?.about}
                 onChange={(e) => handleChange(e)}
                 id="about"
                 name="about"
@@ -248,6 +266,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <input
+                value={product?.streetAddress}
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="streetAddress"
@@ -264,6 +283,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <input
+                value={product?.phoneNumber}
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="phoneNumber"
@@ -280,6 +300,7 @@ const Add = () => {
             </label>
             <div className="mt-2">
               <input
+                value={product?.price}
                 onChange={(e) => handleChange(e)}
                 type="text"
                 id="street-address"
@@ -308,4 +329,4 @@ const Add = () => {
     </div>
   );
 };
-export default Add;
+export default Put;

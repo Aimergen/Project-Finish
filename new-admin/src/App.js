@@ -27,6 +27,8 @@ import "./App.css";
 import { useStateContext } from "./contexts/ContextProvider";
 import Products from "./pages/Products";
 import Add from "./pages/Add";
+import Put from "./pages/Put";
+import Login from "./pages/Login";
 
 const App = () => {
   const {
@@ -47,6 +49,13 @@ const App = () => {
       setCurrentMode(currentThemeMode);
     }
   }, []);
+  if (!localStorage.getItem("token")) {
+    return (
+      <>
+        <Login />
+      </>
+    );
+  }
 
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
@@ -97,6 +106,8 @@ const App = () => {
                 <Route path="/customers" element={<Customers />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/add" element={<Add />} />
+                <Route path="/products/put/:id" element={<Put />} />
+                <Route path="/login" element={<Login />} />
 
                 {/* apps  */}
                 <Route path="/kanban" element={<Kanban />} />

@@ -5,8 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { IUser } from "@/interfaces/user";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
 
 const Info = () => {
   const { currentUser, setCurrentUser } = useCurrentUser();
@@ -35,6 +34,7 @@ const Info = () => {
       })
       .then((res) => {
         setImageUrl(res.data.secure_url);
+        user.profileImage = res.data.secure_url;
       });
   };
 
@@ -46,6 +46,14 @@ const Info = () => {
     };
     setUser(modifiedUser);
   };
+  // useEffect(() => {
+  //   const modifiedUser = {
+  //     ...user,
+  //     profileImage: imageUrl,
+  //   };
+  //   setUser(modifiedUser);
+  //   console.log("image", user.profileImage);
+  // }, [setImageUrl]);
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();

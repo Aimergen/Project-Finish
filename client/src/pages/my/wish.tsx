@@ -11,20 +11,23 @@ import MyModal from "@/components/Modal";
 const Wish = () => {
   const { currentUser } = useCurrentUser();
   if (!currentUser) {
-    return <MyModal/>;
+    return <MyModal />;
   }
 
   const [myWishlist, setMyWhishlist] = useState<IProduct[]>();
   useEffect(() => {
     axios
-      .get(process.env.NEXT_PUBLIC_API_URL + `/wishlist/mywishlist/${currentUser?._id}`)
+      .get(
+        process.env.NEXT_PUBLIC_API_URL +
+          `/wishlist/mywishlist/${currentUser?._id}`
+      )
       .then((res) => {
         setMyWhishlist(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
   return (
     <Aside>
       <div>
@@ -34,11 +37,11 @@ const Wish = () => {
               Таны хадгалсан
             </h2>
 
-            <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8 min-h-[200px]">
-            {myWishlist?.map((product) => (
-              <ProductCard product={product} key={product._id} />
-            ))}
-          </div>
+            <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 xl:gap-x-8 min-h-[200px]">
+              {myWishlist?.map((product) => (
+                <ProductCard product={product} key={product._id} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -11,9 +11,8 @@ import ProductCard from "@/components/ProductCard";
 import { toast } from "react-toastify";
 import { IUser } from "@/interfaces/user";
 import MyModal from "@/components/Modal";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-
 
 const Info = () => {
   const [myProducts, setMyProducts] = useState<IProduct[] | []>([]);
@@ -22,28 +21,28 @@ const Info = () => {
 
   const { currentUser } = useCurrentUser();
   if (!currentUser) {
-    return <MyModal/>;
+    return <MyModal />;
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    if(currentUser){
+    if (currentUser) {
       axios
-      .get(process.env.NEXT_PUBLIC_API_URL + `/${currentUser?._id}`)
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
+        .get(process.env.NEXT_PUBLIC_API_URL + `/users/${currentUser?._id}`)
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-   
   }, []);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/products/ids/${currentUser?._id}`)
+      .get(
+        process.env.NEXT_PUBLIC_API_URL + `/products/ids/${currentUser?._id}`
+      )
       .then((res) => {
         setMyProducts(res.data);
         console.log("my product", myProducts);
@@ -54,9 +53,9 @@ const Info = () => {
   }, []);
   const deleteProduct = (productId: string) => {
     axios
-      .delete(`http://localhost:8000/products/${productId}`)
+      .delete(process.env.NEXT_PUBLIC_API_URL + `/products/${productId}`)
       .then((response) => {
-        toast.success("amjilttai ustgalaa");
+        toast.success("амжилттай устгалаа");
 
         console.log("Product deleted successfully:", response);
         const filteredProducts = myProducts.filter(
@@ -65,10 +64,11 @@ const Info = () => {
         setMyProducts(filteredProducts);
       })
       .catch((error) => {
-        toast.success("ustgahad aldaa garlaa ");
+        toast.success("устгахад алдаа гарлаа");
         console.error("Error deleting product:", error);
       });
   };
+  console.log("info", user);
   return (
     <Aside>
       <>
@@ -79,7 +79,7 @@ const Info = () => {
               height={150}
               alt="profile"
               src={
-                user.profileImage ||
+                user?.profileImage ||
                 "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
               }
               className="rounded-full mx-auto aspect-5/5"
@@ -96,7 +96,9 @@ const Info = () => {
                 Хувийн мэдээлэл
               </div>
               <Link href="update">
-                <p className="text-sm cursor-pointer">shinechleh</p>
+                <p className="text-sm cursor-pointer Btn flex items-center justify-center">
+                  шинэчлэх
+                </p>
               </Link>
             </div>
 
@@ -105,13 +107,15 @@ const Info = () => {
                 <CgLock size={30} className="min-w-max pr-2 mb-2" />
                 Цахим хаяг
               </div>
-              <p className="text-sm">batalgaajsan</p>
+              <p className="text-sm Btn flex items-center justify-center">
+                баталгаажсан
+              </p>
             </div>
           </div>
         </section>
         <h2 className="font-bold text-3xl mt-10">my product</h2>
 
-        <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 xl:gap-x-8">
+        <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 xl:gap-x-8">
           {myProducts?.map((product) => (
             // eslint-disable-next-line react/jsx-key
             <div>
@@ -148,11 +152,8 @@ const Info = () => {
               </div>
               <div className="flex items-center justify-between">
                 <Link href={`/products/put/${product._id}`} key={product._id}>
-                  <button
-                    className="bg-[#ff598f] p-3 rounded-md"
-                    type="button"
-                  >
-                    <AiFillEdit/>
+                  <button className="bg-[#ff598f] p-3 rounded-md" type="button">
+                    <AiFillEdit />
                   </button>
                 </Link>
 
@@ -161,7 +162,7 @@ const Info = () => {
                   type="button"
                   onClick={() => deleteProduct(product._id)}
                 >
-                  <AiFillDelete/>
+                  <AiFillDelete />
                 </button>
               </div>
             </div>

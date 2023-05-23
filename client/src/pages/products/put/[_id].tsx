@@ -7,8 +7,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { IOption, IProduct } from "@/interfaces/product";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
 
 export default function update() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -37,7 +36,6 @@ export default function update() {
       })
       .catch((error) => console.error(error));
   }, []);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {

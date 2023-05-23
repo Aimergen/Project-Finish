@@ -9,7 +9,7 @@ import React, { ChangeEvent, useState } from "react";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Signup() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -40,41 +40,26 @@ export default function Signup() {
       .then((res) => {
         console.log(res.data);
         router.push("/auth/login");
-        toast.success("Amjilttai burtgelee", {
-          position: "top-right",
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.success("Amjilttai burtgelee");
       })
       .catch((err) => {
-        toast.error("huselt aldaatai baina", {
-          position: "top-right",
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.error("huselt aldaatai baina");
       });
   };
+
   // const handleCheckEmail = async () => {
   //   try {
   //     await axios
   //       .post(`${process.env.NEXT_PUBLIC_API_URL}/otp/signup`, user)
   //       .then((res) => {
-  //         const otp = window.prompt("Your OTP?");
+  //         toast.success("prompt амжилттай");
+  //         const otp: any = window.prompt("Your OTP?");
   //         axios
-  //           .post(`${process.env.NEXT_PUBLIC_API_URL}/otp/signup/verify`, {
+  //           .post(
+  //             `${process.env.NEXT_PUBLIC_API_URL}/otp/signup/verify`,
   //             user.email,
-  //             otp,
-  //           })
+  //             otp
+  //           )
   //           .then((res) => {
   //             axios
   //               .post(`${process.env.NEXT_PUBLIC_API_URL}/signup`, user)
@@ -114,81 +99,81 @@ export default function Signup() {
           />
         </div>
         <div className="bg-gray-50 flex flex-col justify-center">
-            <form
-              className="max-w-[400px] w-full mx-auto rounded-lg bg-gray-200 p-8 px-8"
-              onSubmit={handleSubmit}
-            >
-              <h2 className="text-4xl text-slate-700 font-bold text-center">
-                SIGN UP
-              </h2>
-              <div className="flex flex-col text-gray-400 py-2">
-                <label>Email</label>
-                <input
-                  onChange={handleChange}
-                  name="email"
-                  className="rounded-lg bg-gray-50 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none"
-                  type="text"
-                  placeholder="example@mail.com"
-                />
-              </div>
-              <div className="flex flex-col text-gray-400 py-2">
-                <label>Password</label>
-                <input
-                  onChange={handleChange}
-                  name="password"
-                  className="rounded-lg bg-gray-50 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none"
-                  type="password"
-                  placeholder="********"
-                />
-              </div>
-              <div className="flex flex-col text-gray-400 py-2">
-                <label>Re-enter Password</label>
-                <input
-                  onChange={handleChange}
-                  name="repassword"
-                  className="rounded-lg bg-gray-50 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none"
-                  type="password"
-                  placeholder="********"
-                />
-              </div>
-              <div className="flex justify-between text-gray-400 py-2">
-                <p className="flex items-center">
-                  <input className="mr-2" type="checkbox" /> Remember Me
-                </p>
-                <p>Forgot Password</p>
-              </div>
-              <button className="w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-slate-900 font-semibold rounded-lg">
-                SIGN UP
-              </button>
-
-              <button className="w-full cursor-pointer my-5">
-                <div className="flex items-center justify-center bg-white p-3 rounded-lg">
-                  <div>
-                    <FcGoogle />
-                  </div>
-                  <p className="text-black pl-4 font-bold">Google</p>
-                </div>
-              </button>
-
-              <button className="w-full cursor-pointer mb-3">
-                <div className=" flex items-center justify-center bg-white p-3 rounded-lg">
-                  <div>
-                    <BsFacebook className="text-blue-600" />
-                  </div>
-                  <p className="text-black pl-4 font-bold">Facebook</p>
-                </div>
-              </button>
-
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Don’t have an account yet?{" "}
-                <Link
-                  href="login"
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
-                  Sign in
-                </Link>
+          <form
+            className="max-w-[400px] w-full mx-auto rounded-lg bg-gray-200 p-8 px-8"
+            onSubmit={handleSubmit}
+          >
+            <h2 className="text-4xl text-slate-700 font-bold text-center">
+              SIGN UP
+            </h2>
+            <div className="flex flex-col text-gray-400 py-2">
+              <label>Email</label>
+              <input
+                onChange={handleChange}
+                name="email"
+                className="rounded-lg bg-gray-50 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none"
+                type="text"
+                placeholder="example@mail.com"
+              />
+            </div>
+            <div className="flex flex-col text-gray-400 py-2">
+              <label>Password</label>
+              <input
+                onChange={handleChange}
+                name="password"
+                className="rounded-lg bg-gray-50 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none"
+                type="password"
+                placeholder="********"
+              />
+            </div>
+            <div className="flex flex-col text-gray-400 py-2">
+              <label>Re-enter Password</label>
+              <input
+                onChange={handleChange}
+                name="repassword"
+                className="rounded-lg bg-gray-50 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none"
+                type="password"
+                placeholder="********"
+              />
+            </div>
+            <div className="flex justify-between text-gray-400 py-2">
+              <p className="flex items-center">
+                <input className="mr-2" type="checkbox" /> Remember Me
               </p>
-            </form>
+              <p>Forgot Password</p>
+            </div>
+            <button className="w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-slate-900 font-semibold rounded-lg">
+              SIGN UP
+            </button>
+
+            <button className="w-full cursor-pointer my-5">
+              <div className="flex items-center justify-center bg-white p-3 rounded-lg">
+                <div>
+                  <FcGoogle />
+                </div>
+                <p className="text-black pl-4 font-bold">Google</p>
+              </div>
+            </button>
+
+            <button className="w-full cursor-pointer mb-3">
+              <div className=" flex items-center justify-center bg-white p-3 rounded-lg">
+                <div>
+                  <BsFacebook className="text-blue-600" />
+                </div>
+                <p className="text-black pl-4 font-bold">Facebook</p>
+              </div>
+            </button>
+
+            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+              Don’t have an account yet?{" "}
+              <Link
+                href="login"
+                className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+              >
+                Sign in
+              </Link>
+            </p>
+          </form>
         </div>
       </div>
       <Footer />

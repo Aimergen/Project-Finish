@@ -21,6 +21,7 @@ import { useRecoilState } from "recoil";
 import { useContext } from "react";
 import { MyContext } from "@/components/context/Searchcontext";
 import Link from "next/link";
+import { MdEdit } from "react-icons/md";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -69,7 +70,8 @@ export default function Category({ data }: { data: IProduct }) {
       .then((res) => {
         setProducts(res.data);
       });
-  }, [category, limit, ordering, products, search]);
+    console.log("aa");
+  }, [category, limit, ordering, search]);
   // useEffect(() => {
   //   axios
   //     .get(process.env.NEXT_PUBLIC_API_URL + `/products?search=ki&limit=1`)
@@ -216,8 +218,11 @@ export default function Category({ data }: { data: IProduct }) {
               <h1 className="text-4xl font-bold tracking-tight text-gray-900">
                 New Arrivals
               </h1>
-
               <div className="flex items-center">
+                <Link href={"/categories"} className="p-2 mr-5">
+                  <span className="mr-5"> хайлтийг цэвэрлэх</span>
+                </Link>
+
                 <Select
                   items={[
                     { value: "", label: "Sort..." },
@@ -225,8 +230,8 @@ export default function Category({ data }: { data: IProduct }) {
                     { value: "young", label: "Newest" },
                     { value: "titleAsc", label: "A-Z" },
                     { value: "titleDesc", label: "Z-A" },
-                    { value: "priceAsc", label: "үнэ буурахаар" },
-                    { value: "priceDesc", label: "үнэ өсөхөөр" },
+                    { value: "priceDesc", label: "үнэ буурахаар" },
+                    { value: "priceAsc", label: "үнэ өсөхөөр" },
                   ]}
                   onChange={(e) => {
                     addQuery({ ordering: e.target.value });

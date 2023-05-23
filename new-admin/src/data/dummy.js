@@ -26,7 +26,7 @@ import {
 import { BiColorFill } from "react-icons/bi";
 import { IoMdContacts } from "react-icons/io";
 import { RiContactsLine, RiStockLine } from "react-icons/ri";
-import { MdOutlineSupervisorAccount } from "react-icons/md";
+import { MdEdit, MdOutlineSupervisorAccount } from "react-icons/md";
 import { HiOutlineRefresh } from "react-icons/hi";
 import { TiTick } from "react-icons/ti";
 import { GiLouvrePyramid } from "react-icons/gi";
@@ -44,7 +44,11 @@ import product6 from "./product6.jpg";
 import product7 from "./product7.jpg";
 // import product8 from "./product8.jpg";
 import moment from "moment";
-import { MdDelete,MdRestartAlt } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 export const gridOrderImage = (props) => (
   <div className="flex justify-center">
@@ -61,34 +65,49 @@ export const gridOrderCreated = (props) => (
   </div>
 );
 export const handleDelete = (id) => {
-  // Perform delete operation based on the ID
-  // For example:
-  const updatedData = ordersData.filter((item) => item._id !== id);
-  // Update the data source or perform any other necessary actions
-  ordersData = updatedData;
+  axios
+    .delete(`http://localhost:8000/products/${id}`)
+    .then((response) => {
+      toast.success("амжилттай устгалаа");
+
+      console.log("Product deleted successfully:", response);
+      // const filteredProducts = myProducts.filter(
+      //   (product: any) => product._id !== productId
+      // );
+      // setMyProducts(filteredProducts);
+    })
+    .catch((error) => {
+      toast.success("устгахад алдаа гарлаа");
+      console.error("Error deleting product:", error);
+    });
 };
 
-export const handleUpdate = (id) => {
-  // Perform update operation based on the ID
-  // For example:
-  const updatedItem = ordersData.find((item) => item._id === id);
-  // Perform the update logic or navigate to the update page with the item data
-  console.log("Updating item:", updatedItem);
-};
+// export const handleUpdate = (id) => {
+//   // Perform update operation based on the ID
+//   // For example:
+//   const updatedItem = ordersData.find((item) => item._id === id);
+//   // Perform the update logic or navigate to the update page with the item data
+//   console.log("Updating item:", updatedItem);
+// };
 const updateButton = (props) => {
   return (
-    <div className=" gap-2">
+    <div className="">
+      <Link to={`/products/put/${props._id}`}>
+        <button className="btn-update px-5  text-sky-500">
+          <MdEdit size={20} />
+        </button>
+      </Link>
+    </div>
+  );
+};
+const deleteButton = (props) => {
+  return (
+    <div className="">
       <button
-        className="btn-update"
-        onClick={() => handleUpdate(props.data._id)}
+        className="btn-delete text-red-500"
+        onClick={() => handleDelete(props._id)}
       >
-        <MdRestartAlt/>
-      </button>
-      <button
-        className="btn-delete"
-        onClick={() => handleDelete(props.data._id)}
-      >
-        <MdDelete/>
+        <MdDelete size={20} />
       </button>
     </div>
   );
@@ -1040,10 +1059,17 @@ export const productsGrid = [
     textAlign: "Center",
   },
   {
-  headerText:"Actions",
-            template:updateButton,
-            width:"120",
-            textAlign:"Center",}
+    headerText: "Actions",
+    template: updateButton,
+    width: "60",
+    textAlign: "Center",
+  },
+  {
+    headerText: "Actions",
+    template: deleteButton,
+    width: "60",
+    textAlign: "Center",
+  },
 ];
 
 export const customersData = [

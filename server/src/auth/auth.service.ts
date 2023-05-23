@@ -85,7 +85,7 @@ export class AuthService {
       this.removeOTP(token);
       throw new HttpException('OTP is expired', HttpStatus.BAD_REQUEST);
     }
-    return otp
+    return otp;
     // let user = await this.usersService.findOneByEmail(email);
 
     // if (!user) user = await this.usersService.create({ email });

@@ -4,6 +4,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { Button } from ".";
 import { userProfileData } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
+import { Link } from "react-router-dom";
 // import avatar from '../data/avatar.jpg';
 
 const UserProfile = () => {
@@ -67,13 +68,18 @@ const UserProfile = () => {
         ))}
       </div>
       <div className="mt-5">
-        <Button
-          color="white"
-          bgColor={currentColor}
-          text="Logout"
-          borderRadius="10px"
-          width="full"
-        />
+        <Link to={"/login"}>
+          <Button
+            color="white"
+            bgColor={currentColor}
+            text="Logout"
+            borderRadius="10px"
+            width="full"
+            onClick={() => {
+              localStorage.removeItem("token");
+            }}
+          />
+        </Link>
       </div>
     </div>
   );
