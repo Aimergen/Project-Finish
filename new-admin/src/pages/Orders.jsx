@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   GridComponent,
   ColumnsDirective,
@@ -14,9 +14,8 @@ import {
   Inject,
 } from "@syncfusion/ej2-react-grids";
 
-import { ordersData, contextMenuItems, ordersGrid } from "../data/dummy";
+import { contextMenuItems, ordersGrid } from "../data/dummy";
 import { Header } from "../components";
-import axios from "axios";
 import { useCrud } from "../hooks/useCrud";
 
 const Orders = () => {
