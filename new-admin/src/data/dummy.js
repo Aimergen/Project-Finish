@@ -66,7 +66,7 @@ export const gridOrderCreated = (props) => (
 );
 export const handleDelete = (id) => {
   axios
-    .delete(`http://localhost:8000/products/${id}`)
+    .delete(process.env.REACT_APP_API_URL + `/products/${id}`)
     .then((response) => {
       toast.success("амжилттай устгалаа");
 

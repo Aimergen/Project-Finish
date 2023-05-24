@@ -15,7 +15,7 @@ const Put = () => {
   console.log("id", id);
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/products/${id}`)
+      .get(process.env.REACT_APP_API_URL + `/products/${id}`)
       .then((res) => {
         setProduct(res.data);
       })
@@ -26,7 +26,7 @@ const Put = () => {
     const fd = new FormData();
     fd.append("file", e.target.files[0]);
     axios
-      .post("http://localhost:8000/products/upload", fd, {
+      .post(process.env.REACT_APP_API_URL + "/products/upload", fd, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -71,7 +71,10 @@ const Put = () => {
     e.preventDefault();
     console.log("product:", newProduct);
     axios
-      .patch(`http://localhost:8000/products/${product._id}`, product)
+      .patch(
+        process.env.REACT_APP_API_URL + `/products/${product._id}`,
+        product
+      )
       .then((res) => {
         console.log("Product updated successfully:", res.data);
         toast.success("амжилттай шинэчиллээ.");
