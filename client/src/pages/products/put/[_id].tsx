@@ -69,6 +69,7 @@ export default function update() {
       .then((res) => {
         console.log("Product updated successfully:", res.data);
         toast.success("amjilttai shinechillee");
+        a.push("/my/info");
       })
       .catch((err) => {
         console.error("Error updating product:", err);

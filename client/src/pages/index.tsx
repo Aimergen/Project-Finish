@@ -13,6 +13,7 @@ import HomeNavbar from "@/components/Homepage/HomeNavbar";
 import SpecialCategory from "@/components/SpecialCategory";
 import FacebookCustomerChat from "@/components/FacebookCustomerChat";
 import Reason from "@/components/Reason";
+import Loading from "@/components/Loading/Loading";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
@@ -30,11 +31,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 export default function Home({ data }: { data: IProduct[] }) {
   const products = data;
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
   const { query } = router;
   const { ordering = "", limit = 15, search = "", page = 0 } = query;
   const { addQuery } = useQuery();
+  useEffect(() => {
+    if (data) {
+      setIsLoading(false);
+    }
+  }, []);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <>
       {/* <Layout> */}
       <HomeNavbar />
@@ -50,6 +59,16 @@ export default function Home({ data }: { data: IProduct[] }) {
               <ProductCard product={product} key={product._id} />
             ))}
           </div>
+
+          {/* <button
+            type="button"
+            onClick={() => {
+              setLimitCount(1000);
+            }}
+            className="flex justify-center"
+          >
+            bugdiig uzeh
+          </button> */}
         </div>
         <ImageCard />
         <Reason />

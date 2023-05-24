@@ -1,4 +1,5 @@
 export interface IProduct {
+  productId: string;
   map(arg0: (product: IProduct) => JSX.Element): import("react").ReactNode;
   productImageSrc: string;
   brand: string;
@@ -35,19 +36,19 @@ export interface IMyContext {
   search: string;
   setSearch: string;
 }
-export interface IOrder{
-  _id: string,
-firstName: string,
-lastName:string,
-email:string,
-phoneNumber: string,
-streetAddress:string,
-price:number;
-city: string,
-region:string,
-userId:string,
-productId: string,
-status: boolean,
-createdAt: string,
-updatedAt: string,
+export interface IOrder {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  streetAddress: string;
+  price: number;
+  city: string;
+  region: string;
+  userId: string;
+  productId: string;
+  status: boolean;
+  createdAt: string;
+  updatedAt: string;
 }

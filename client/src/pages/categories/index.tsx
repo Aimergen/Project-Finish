@@ -55,7 +55,7 @@ export default function Category({ data }: { data: IProduct }) {
   const { query } = router;
   const {
     ordering = "",
-    limit = 25,
+    limit = 100,
     search = searchValue,
     page = 0,
     category = "",
@@ -214,14 +214,14 @@ export default function Category({ data }: { data: IProduct }) {
           </Transition.Root>
 
           <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-12">
+            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-12 max-md:flex-col max-md:gap-4">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900">
                 New Arrivals
               </h1>
               <div className="flex items-center">
-                <Link href={"/categories"} className="p-2 mr-5">
+                {/* <Link href={"/categories"} className="p-2 mr-5">
                   <span className="mr-5"> хайлтийг цэвэрлэх</span>
-                </Link>
+                </Link> */}
 
                 <Select
                   items={[

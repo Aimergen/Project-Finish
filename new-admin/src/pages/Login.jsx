@@ -4,10 +4,12 @@ import { BsFacebook } from "react-icons/bs";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useStateContext } from "../contexts/ContextProvider";
 // import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   // const navigate = useNavigate();
+  const { setIsLogged } = useStateContext();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -23,6 +25,7 @@ export default function Login() {
           console.log("status", res);
           localStorage.setItem("token", res.data[0]);
           toast.success("амжилттай нэвтэрлээ");
+          setIsLogged(true);
           axios
             .get("http::/localhost:8000/currentUser", {
               headers: {

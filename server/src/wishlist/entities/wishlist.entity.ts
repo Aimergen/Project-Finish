@@ -8,31 +8,16 @@ export class Wishlist {
   @Prop({ default: () => nanoid() })
   _id: string;
   @Prop()
-  userId: string;
-  @Prop()
-  status: boolean;
-  @Prop()
-  category: string;
-  @Prop()
-  option: string;
-  @Prop()
-  productState: string;
-  @Prop()
-  about: string;
-  @Prop()
-  brand: string;
-  @Prop()
   name: string;
   @Prop()
   price: number;
   @Prop()
-  productImageSrc: string;
+  productId: string;
   @Prop()
-  size: string;
+  image: string;
   @Prop()
   customerId: string;
   @Prop()
-  streetAddress: string;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -7,13 +7,12 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { IOption } from "@/interfaces/product";
 import { toast } from "react-toastify";
 import MyModal from "@/components/Modal";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Example() {
   const { currentUser } = useCurrentUser();
   if (!currentUser) {
-    return <MyModal/>;
+    return <MyModal />;
   }
 
   const [imageUrl, setImageUrl] = useState("");
@@ -108,10 +107,7 @@ export default function Example() {
                 }}
                 width={1000}
                 height={100}
-                src={
-                  imageUrl ||
-                  "/images/placeholder.png"
-                }
+                src={imageUrl || "/images/placeholder.png"}
                 alt="add product image"
               />
               <input
@@ -138,6 +134,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <select
+                required
                 onChange={(e: any) => handleChange(e)}
                 id="category"
                 name="category"
@@ -159,6 +156,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <select
+                required
                 onChange={(e: any) => handleChange(e)}
                 id="option"
                 name="option"
@@ -181,6 +179,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <select
+                required
                 onChange={(e: any) => handleChange(e)}
                 id="productState"
                 name="productState"
@@ -201,6 +200,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <input
+                required
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="brand"
@@ -217,6 +217,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <input
+                required
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="size"
@@ -233,6 +234,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <input
+                required
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="name"
@@ -249,6 +251,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <input
+                required
                 onChange={(e) => handleChange(e)}
                 id="about"
                 name="about"
@@ -264,6 +267,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <input
+                required
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="streetAddress"
@@ -280,6 +284,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <input
+                required
                 onChange={(e) => handleChange(e)}
                 type="text"
                 name="phoneNumber"
@@ -296,6 +301,7 @@ export default function Example() {
             </label>
             <div className="mt-2">
               <input
+                required
                 onChange={(e) => handleChange(e)}
                 type="text"
                 id="street-address"

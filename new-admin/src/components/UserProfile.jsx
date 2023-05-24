@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { currentColor } = useStateContext();
+  const { isLogged, setIsLogged } = useStateContext();
 
   return (
     <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -69,16 +70,28 @@ const UserProfile = () => {
       </div>
       <div className="mt-5">
         <Link to={"/login"}>
-          <Button
+          {/* <Button
             color="white"
             bgColor={currentColor}
             text="Logout"
             borderRadius="10px"
             width="full"
             onClick={() => {
-              localStorage.removeItem("token");
+              if (localStorage.getItem("token")) {
+                localStorage.removeItem("token");
+                console.log("remove");
+              }
             }}
-          />
+          /> */}
+          <button
+            className={`bg-${currentColor} w-full border-4`}
+            onClick={() => {
+              localStorage.removeItem("token");
+              setIsLogged(false);
+            }}
+          >
+            Logout
+          </button>
         </Link>
       </div>
     </div>

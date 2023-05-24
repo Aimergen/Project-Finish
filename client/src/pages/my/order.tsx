@@ -24,22 +24,30 @@ const Order = () => {
   console.log("order", myOrders);
   return (
     <Aside>
-      <div className="bg-white rounded-lg p-4 min-h-[200px]">
-      <h2 className="font-bold text-2xl">My orders</h2>
-      <div className="">
-        {myOrders.map((item: any) => (
-         <div className=" p-2 flex items-center gap-10 border-b-2 max-md:gap-2 max-sm:justify-between justify-evenly">
-          <Image src={item.productImageSrc} alt={item._id} width={1000} height={100} className="h-[70px] w-[70px] bg-cover object-cover rounded-lg"/>
-          <div className="w-[50px] ">₮{item.price}</div>
-          <div className="w-[200px] max-sm:hidden">{item.email}</div>
-          <div className="w-[100px] max-xl:hidden">
-            {moment(item.createdAt).fromNow(true)} ago
+      <div className="bg-white rounded-lg p-4 min-h-[300px]">
+        <h2 className="font-bold text-2xl">My orders</h2>
+        <div className="">
+          {myOrders.map((item: any) => (
+            <div className=" p-2 flex items-center gap-10 border-b-2 max-md:gap-2 max-sm:justify-between justify-evenly">
+              <Image
+                src={item.productImageSrc}
+                alt={item._id}
+                width={1000}
+                height={100}
+                className="h-[70px] w-[70px] bg-cover object-cover rounded-lg"
+              />
+              <div className="w-[50px] ">₮{item.price}</div>
+              <div className="w-[200px] max-sm:hidden">{item.email}</div>
+              <div className="w-[100px] max-xl:hidden">
+                {moment(item.createdAt).fromNow(true)} ago
+              </div>
+              <div className="w-[100px] max-lg:hidden">{item.city}</div>
+              <div className="w-[200px] max-lg:hidden">
+                {item.streetAddress}
+              </div>
             </div>
-            <div className="w-[100px] max-lg:hidden">{item.city}</div>
-            <div className="w-[200px] max-lg:hidden">{item.streetAddress}</div>
-         </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </Aside>
   );

@@ -31,16 +31,12 @@ export class WishlistController {
   //   return this.wishlistService.findOne(+id);
   // }
   @Get(':_id')
-  findOne(
-    @Param('_id') id: string,
-    @Query('customerId') customerId: string,
-  ){
-    console.log("user",customerId)
+  findOne(@Param('_id') id: string, @Query('customerId') customerId: string) {
     return this.wishlistService.findOne(id, customerId);
   }
   @Get('mywishlist/:id')
-  findMyWishlist(@Param('id') customerId:string){
-    return this.wishlistService.findMyWishlist(customerId)
+  findMyWishlist(@Param('id') customerId: string) {
+    return this.wishlistService.findMyWishlist(customerId);
   }
 
   @Patch(':id')
