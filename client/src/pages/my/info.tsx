@@ -23,6 +23,9 @@ const Info = () => {
   if (!currentUser) {
     return <MyModal />;
   }
+  if(!localStorage.getItem('token')){
+    return <MyModal />;
+  }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (currentUser) {
@@ -82,7 +85,7 @@ const Info = () => {
                 user?.profileImage ||
                 "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
               }
-              className="rounded-full mx-auto aspect-5/5"
+              className="rounded-full mx-auto aspect-5/5 shadow-lg"
             />
             <h2 className="font-bold flex justify-center">
               {currentUser?.email}

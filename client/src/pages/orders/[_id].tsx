@@ -10,6 +10,8 @@ import axios from "axios";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, FC, Suspense, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const getStaticPaths = async () => {
   const response = await fetch(
@@ -47,6 +49,7 @@ export default function Order({ data }: { data: any }) {
   if (!currentUser) {
     return <MyModal/>;
   }
+  const router = useRouter()
   const order = data;
   const [addOrder, setAddOrder] = useState({
     firstName: "",
@@ -64,7 +67,7 @@ export default function Order({ data }: { data: any }) {
     status: true,
   });
   const [orderPrice, setOrderPrice] = useState(
-    order.price + order.price / 20 + 5000
+    order.price  + 5000
   );
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -74,9 +77,12 @@ export default function Order({ data }: { data: any }) {
       .post(process.env.NEXT_PUBLIC_API_URL + "/orders/add", addOrder)
       .then((res) => {
         console.log(res.data);
+        toast.success('захиалга амжилттай хийгдлээ');
+        router.push(`/categories`)
       })
       .catch((err) => {
         console.log(err);
+        toast.error('захиалга хийхэд алдаа гарлаа')
       });
   };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

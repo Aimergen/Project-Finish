@@ -12,4 +12,5 @@ export class CreateWishlistDto {
   userId: string;
   statis: boolean;
   productState: string;
+  customerId: string;
 }

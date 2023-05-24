@@ -18,12 +18,12 @@ export class WishlistService {
   async findAll() {
     return await this.wishlistModel.find();
   }
-  async findMyWishlist(userId:string){
-    return await this.wishlistModel.find({ userId: userId})
+  async findMyWishlist(customerId:string){
+    return await this.wishlistModel.find({ customerId: customerId})
   }
 
-   async findOne(_id: string, userId: string) {
-    return await this.wishlistModel.findOne({_id,userId})
+   async findOne(_id: string, customerId: string) {
+    return await this.wishlistModel.findOne({_id,customerId})
   }
 
   update(id: number, updateWishlistDto: UpdateWishlistDto) {

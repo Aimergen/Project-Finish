@@ -9,13 +9,13 @@ import {
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdExitToApp } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import Layout from "@/components/Layout";
+// import Layout from "@/components/Layout";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-import { useRouter } from "next/router";
-import { IProduct } from "@/interfaces/product";
+// import { useRouter } from "next/router";
+// import { IProduct } from "@/interfaces/product";
 import { useCurrentUser } from "@/components/CurretnUserProvider";
-import axios from "axios";
+// import axios from "axios";
 
 interface AsideBarProps {
   children: ReactNode;
@@ -23,12 +23,12 @@ interface AsideBarProps {
 
 const Aside: FC<AsideBarProps> = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const { currentUser, setCurrentUser } = useCurrentUser();
+  const { setCurrentUser } = useCurrentUser();
 
 
   const removeToken = () => {
     localStorage.removeItem("token");
-    setCurrentUser(null);
+  
   };
 
   return (

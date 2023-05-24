@@ -6,11 +6,13 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { IUser } from "@/interfaces/user";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 const Info = () => {
   const { currentUser, setCurrentUser } = useCurrentUser();
   const [user, setUser] = useState<IUser | any>([]);
   const [imageUrl, setImageUrl] = useState("");
+  const router = useRouter()
 
   useEffect(() => {
     axios
@@ -57,16 +59,17 @@ const Info = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    axios
+      axios
       .patch(
         process.env.NEXT_PUBLIC_API_URL + `/users/${currentUser?._id}`,
         user
       )
       .then((res) => {
-        toast.success("amjilttai shinechillee");
+        toast.success("амжилттай шинэчиллээ");
+        router.push('/my/info')
       })
       .catch((err) => {
-        toast.success("shinechlehed aldaa garlaa");
+        toast.success("шинэчилэхэд алдаа гарлаа");
       });
   };
   return (

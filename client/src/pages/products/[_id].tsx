@@ -63,18 +63,40 @@ const Index: FC<Props> = ({ data }) => {
   const removeWishlist =
     "https://cdn.icon-icons.com/icons2/3553/PNG/512/wishlist_favorites_favorite_heart_like_ecommerce_icon_224938.png";
   const [wishlist, setWishlist] = useState(true);
+  const {currentUser} = useCurrentUser();
+  const customerId = currentUser?._id
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       process.env.NEXT_PUBLIC_API_URL +
+  //       `/wishlist/${product._id}?customerId=${customerId}`
+  //     )
+  //     .then((res) => {
+  //       if(res.data.customerId === customerId){
+  //         setWishlist(!wishlist)
+  //         console.log('truuuuuu')
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+  
   function handleWishlist(product: any) {
     setWishlist(!wishlist);
     console.log(wishlist);
     wishlist &&
-      axios
-        .post(process.env.NEXT_PUBLIC_API_URL + "/wishlist", product)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    axios
+    .post(process.env.NEXT_PUBLIC_API_URL + "/wishlist", {
+      ...product,
+      customerId: currentUser?._id
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
     !wishlist && deleteWishlist(product._id);
   }
   const deleteWishlist = (productId: string) => {

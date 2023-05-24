@@ -30,6 +30,8 @@ export class Wishlist {
   @Prop()
   size: string;
   @Prop()
+  customerId: string;
+  @Prop()
   streetAddress: string;
   createdAt: Date;
   updatedAt: Date;

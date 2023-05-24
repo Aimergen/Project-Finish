@@ -18,7 +18,6 @@ export class WishlistController {
 
   @Post()
   create(@Body() createWishlistDto: CreateWishlistDto) {
-    // console.log('wishlist', createWishlistDto);
     return this.wishlistService.create(createWishlistDto);
   }
 
@@ -34,14 +33,14 @@ export class WishlistController {
   @Get(':_id')
   findOne(
     @Param('_id') id: string,
-    @Query('userId') userId: string,
+    @Query('customerId') customerId: string,
   ){
-    console.log("user",userId)
-    return this.wishlistService.findOne(id, userId);
+    console.log("user",customerId)
+    return this.wishlistService.findOne(id, customerId);
   }
   @Get('mywishlist/:id')
-  findMyWishlist(@Param('id') userId:string){
-    return this.wishlistService.findMyWishlist(userId)
+  findMyWishlist(@Param('id') customerId:string){
+    return this.wishlistService.findMyWishlist(customerId)
   }
 
   @Patch(':id')
