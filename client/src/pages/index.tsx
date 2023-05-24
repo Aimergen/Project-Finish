@@ -14,6 +14,8 @@ import SpecialCategory from "@/components/SpecialCategory";
 import FacebookCustomerChat from "@/components/FacebookCustomerChat";
 import Reason from "@/components/Reason";
 import Loading from "@/components/Loading/Loading";
+import Layout from "@/components/Layout";
+import Spinner from "@/components/Spinner";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
@@ -45,10 +47,12 @@ export default function Home({ data }: { data: IProduct[] }) {
     <Loading />
   ) : (
     <>
-      {/* <Layout> */}
-      <HomeNavbar />
+      <Layout>
+        <Spinner />
+
+        {/* <HomeNavbar />
       <Three />
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8"> */}
         <SpecialCategory />
 
         <div className="bg-white my-24">
@@ -72,10 +76,10 @@ export default function Home({ data }: { data: IProduct[] }) {
         </div>
         <ImageCard />
         <Reason />
-      </div>
-      <Footer />
-      {/* <FacebookCustomerChat /> */}
-      {/* </Layout> */}
+        {/* </div>
+      <Footer /> */}
+        {/* <FacebookCustomerChat /> */}
+      </Layout>
     </>
   );
 }

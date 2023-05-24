@@ -31,8 +31,11 @@ export class WishlistController {
   //   return this.wishlistService.findOne(+id);
   // }
   @Get(':_id')
-  findOne(@Param('_id') id: string, @Query('customerId') customerId: string) {
-    return this.wishlistService.findOne(id, customerId);
+  findOne(
+    @Param('_id') productId: string,
+    @Query('customerId') customerId: string,
+  ) {
+    return this.wishlistService.findOne(productId, customerId);
   }
   @Get('mywishlist/:id')
   findMyWishlist(@Param('id') customerId: string) {
@@ -49,9 +52,9 @@ export class WishlistController {
 
   @Delete(':_id')
   async remove(
-    @Param('_id') id: string,
-    @Body('userId') userId: string,
+    @Param('_id') productId: string,
+    @Body('customerId') customerId: string,
   ): Promise<any> {
-    return this.wishlistService.remove(id, userId);
+    return this.wishlistService.remove(productId, customerId);
   }
 }

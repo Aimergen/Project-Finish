@@ -25,7 +25,7 @@ export default function Login() {
         if (status === res.status) {
           console.log("status", res);
           localStorage.setItem("token", res.data[0]);
-          toast.success("амжилттай нэвтэрлээ");
+          toast.success("Hi admin");
           setIsLogged(true);
           axios
             .get(process.env.REACT_APP_API_URL + "/currentUser", {

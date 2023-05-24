@@ -22,15 +22,15 @@ export class WishlistService {
     return await this.wishlistModel.find({ customerId: customerId });
   }
 
-  async findOne(_id: string, customerId: string) {
-    return await this.wishlistModel.findOne({ _id, customerId });
+  async findOne(productId: string, customerId: string) {
+    return await this.wishlistModel.findOne({ productId, customerId });
   }
 
   update(id: number, updateWishlistDto: UpdateWishlistDto) {
     return `This action updates a #${id} wishlist`;
   }
 
-  async remove(_id: string, userId: string) {
-    return await this.wishlistModel.findOneAndDelete({ _id, userId });
+  async remove(productId: string, customerId: string) {
+    return await this.wishlistModel.findOneAndDelete({ productId, customerId });
   }
 }

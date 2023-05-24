@@ -76,7 +76,7 @@ const Index: FC<Props> = ({ data }) => {
         if (res.data) {
           setWishlist(false);
         } else {
-          setWishlist(true);
+          // setWishlist(true);
         }
       })
       .catch((err) => {
@@ -85,8 +85,7 @@ const Index: FC<Props> = ({ data }) => {
   }
 
   function handleWishlist(product: any) {
-    setWishlist(!wishlist);
-    console.log(wishlist);
+    setWishlist(false);
     wishlist &&
       axios
         .post(process.env.NEXT_PUBLIC_API_URL + "/wishlist", {
@@ -107,10 +106,12 @@ const Index: FC<Props> = ({ data }) => {
   const deleteWishlist = (productId: string) => {
     axios
       .delete(process.env.NEXT_PUBLIC_API_URL + `/wishlist/${productId}`, {
-        data: { userId: product.userId },
+        data: { customerId: customerId },
       })
       .then((response) => {
-        console.log(response.data);
+        console.log("res", response);
+        setWishlist(true);
+        console.log("ustgalaa", wishlist);
       })
       .catch((error) => {
         console.error("Error deleting product:", error);

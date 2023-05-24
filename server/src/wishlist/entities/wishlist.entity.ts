@@ -14,7 +14,7 @@ export class Wishlist {
   @Prop()
   productId: string;
   @Prop()
-  image: string;
+  productImageSrc: string;
   @Prop()
   customerId: string;
   @Prop()
