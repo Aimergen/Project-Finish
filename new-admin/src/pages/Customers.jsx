@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   GridComponent,
   ColumnsDirective,
@@ -15,13 +15,22 @@ import {
 import { customersData, customersGrid } from "../data/dummy";
 import { Header } from "../components";
 import { useCrud } from "../hooks/useCrud";
+import axios from "axios";
 
 const Customers = () => {
   const selectionsettings = { persistSelection: true };
   const toolbarOptions = ["Delete"];
   const editing = { allowDeleting: true, allowEditing: true };
-  const { items: users } = useCrud("users");
-  console.log("user", users);
+  // const { items: users } = useCrud("users");
+  const [users, setUsers] = useState();
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/users")
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">

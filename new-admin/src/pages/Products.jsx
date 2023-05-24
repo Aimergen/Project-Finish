@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   GridComponent,
   ColumnsDirective,
@@ -18,9 +18,19 @@ import { contextMenuItems, productsGrid } from "../data/dummy";
 import { Header } from "../components";
 import { useCrud } from "../hooks/useCrud";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Products = () => {
-  const { items: products } = useCrud("products/true/true");
+  const [products, setProduct] = useState();
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/products")
+      .then((res) => {
+        setProduct(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  // const { items: products } = useCrud("products/true/true");
 
   const editing = { allowDeleting: true, allowEditing: true };
 

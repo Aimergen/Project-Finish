@@ -21,8 +21,6 @@ export default function Login() {
     axios
       .post(process.env.REACT_APP_API_URL + "/signin", user)
       .then((res) => {
-        console.log(`url ${process.env.REACT_APP_API_URL}`);
-
         window.location.href = "/";
         if (status === res.status) {
           console.log("status", res);
