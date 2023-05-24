@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault();
     const status = 201;
     axios
-      .post("http://localhost:8000/signin", user)
+      .post(process.env.REACT_APP_API_URL + "/signin", user)
       .then((res) => {
         window.location.href = "/";
         if (status === res.status) {
@@ -24,7 +24,7 @@ export default function Login() {
           localStorage.setItem("token", res.data[0]);
           toast.success("амжилттай нэвтэрлээ");
           axios
-            .get("http::/localhost:8000/currentUser", {
+            .get(process.env.REACT_APP_API_URL + "/currentUser", {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
               },
