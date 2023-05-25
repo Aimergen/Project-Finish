@@ -66,9 +66,9 @@ export default function Home({ data }: { data: IProduct[] }) {
             ))}
           </div>
         </div>
+        <Sponser />
         <ImageCard />
         <Reason />
-        <Sponser />
         {/* </div>
       <Footer /> */}
         <ScrollTopButton />

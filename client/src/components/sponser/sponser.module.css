@@ -5,127 +5,125 @@
   body {
     min-height: 100vh;
   } */
-  
-  .body {
-    --space: 3rem;
-  
-    display: grid;
-    align-content: center;
-    overflow: hidden;
-    gap: var(--space);
-    width: 100%;
-    font-size: 1.5rem;
-    line-height: 1.5;
-    background-color: #F8DC81;
-  }
-  
-  .marquee {
-    --duration: 50s;
-    --gap: var(--space);
-  
-    display: flex;
-    overflow: hidden;
-    user-select: none;
-    gap: var(--gap);
-  }
-  
+
+.body {
+  --space: 3rem;
+
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+  gap: var(--space);
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  /* background-color: #F8DC81; */
+}
+
+.marquee {
+  --duration: 50s;
+  --gap: var(--space);
+
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+}
+
+.marquee__group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: scroll var(--duration) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
   .marquee__group {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: var(--gap);
-    min-width: 100%;
-    animation: scroll var(--duration) linear infinite;
+    animation-play-state: paused;
   }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .marquee__group {
-      animation-play-state: paused;
-    }
-  }
-  
-  .marquee__group h4 {
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 1rem;
-    border: 1px solid #ccc;
-    padding: 3rem;
-  }
-  
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-  
-    100% {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
+}
+
+.marquee__group h4 {
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+  padding: 3rem;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
 
-  /* * {
+  100% {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+/* * {
     box-sizing: border-box;
   }
   
   body {
     min-height: 100vh;
   } */
-  
-  .body2 {
-    --space: 3rem;
-  
-    display: grid;
-    align-content: center;
-    overflow: hidden;
-    gap: var(--space);
-    width: 100%;
-    font-size: 1.5rem;
-    line-height: 1.5;
-    background-color: #F8DC81;
-  }
-  
-  .marquee2 {
-    --duration: 50s;
-    --gap: var(--space);
-  
-    display: flex;
-    overflow: hidden;
-    user-select: none;
-    gap: var(--gap);
-  }
-  
+
+.body2 {
+  --space: 3rem;
+
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+  gap: var(--space);
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  /* background-color: #f8dc81; */
+}
+
+.marquee2 {
+  --duration: 50s;
+  --gap: var(--space);
+
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+}
+
+.marquee__group2 {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: scroll2 var(--duration) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
   .marquee__group2 {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: var(--gap);
-    min-width: 100%;
-    animation: scroll2 var(--duration) linear infinite;
+    animation-play-state: paused;
   }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .marquee__group2 {
-      animation-play-state: paused;
-    }
-  }
-  
-  .marquee__group2 h4 {
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 1rem;
-    border: 1px solid #ccc;
-    padding: 3rem;
-  }
-  
-  @keyframes scroll2 {
-    0% {
-      transform: translateX(calc(-100% - var(--gap)));
+}
 
-    }
-  
-    100% {
-      transform: translateX(0);
+.marquee__group2 h4 {
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+  padding: 3rem;
+}
 
-    }
+@keyframes scroll2 {
+  0% {
+    transform: translateX(calc(-100% - var(--gap)));
   }
+
+  100% {
+    transform: translateX(0);
+  }
+}

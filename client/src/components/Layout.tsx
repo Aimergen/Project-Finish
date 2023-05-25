@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import Spinner from "./Spinner";
 import Head from "next/head";
 import ScrollTopButton from "./ScrollTopButton";
+import Sponser from "./sponser/Sponser";
 
 export default function Layout({
   children,
