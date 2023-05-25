@@ -262,13 +262,13 @@ export default function Order({ data }: { data: any }) {
                       className="mt-1.5  block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     >
                       <option value="home" key="home">
-                        home
+                        гэр
                       </option>
                       <option value="job" key="job">
-                        job
+                        ажил
                       </option>
                       <option value="other" key="other">
-                        other
+                        бусад
                       </option>
                     </select>
                   </div>
@@ -281,16 +281,16 @@ export default function Order({ data }: { data: any }) {
               Төлбөрийн мэдээлэл
             </h2>
             <div className="grid grid-cols-2 shadow-lg p-5 rounded-3xl border-2 gap-5 mt-16">
-              <div className="col-span-1">huleen avagch</div>
+              <div className="col-span-1">Хүлээн авагч</div>
               <div className="col-span-1 font-semibold">Трифт shop</div>
-              <div className="col-span-1"> dans</div>
+              <div className="col-span-1"> Данс</div>
               <div className="col-span-1 font-semibold">504809876</div>
-              <div className="col-span-1">une</div>
+              <div className="col-span-1">Үнэ</div>
               <div className="col-span-1 font-semibold">{order.price}</div>
-              <div className="col-span-1"> hurgelt</div>
+              <div className="col-span-1"> Хүргэлт</div>
               <div className="col-span-1 font-semibold">5000</div>
               <div className="col-span-2 border-t-2 grid grid-cols-2 pt-3">
-                <div className="col-span-1 font-semibold"> niit une</div>
+                <div className="col-span-1 font-semibold"> Нийт үнэ</div>
                 <div className="col-span-1 font-bold">{orderPrice}</div>
               </div>
             </div>
@@ -299,10 +299,15 @@ export default function Order({ data }: { data: any }) {
               type="button"
               onClick={handleSubmit}
             >
-              hudaldan avah
+              Худалдан авах
             </button>
-            <button className="bg-[#ff598f] rounded-3xl py-3 w-full">
-              butsah
+            <button
+              className="bg-[#ff598f] rounded-3xl py-3 w-full"
+              onClick={() => {
+                router.push(`/products/${order._id}`);
+              }}
+            >
+              Цуцлах
             </button>
           </div>
         </div>
