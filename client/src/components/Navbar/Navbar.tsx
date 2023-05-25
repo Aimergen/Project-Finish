@@ -138,7 +138,7 @@ export default function Navbar() {
                       <FiHeart />
                     </button>
                   </Link>
-                  <Link href={"/products/add"}>
+                  <Link href={"/my/add"}>
                     <button
                       type="button"
                       className="rounded-full text-black hover:pb-5 text-lg p-3"
