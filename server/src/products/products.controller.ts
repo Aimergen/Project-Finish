@@ -102,7 +102,7 @@ export class ProductsController {
     if (search) {
       condition.name = { $regex: new RegExp(`${search}`, 'i') };
     }
-    if (minValue.length === 0) {
+    if (minValue.length == 0) {
       minValue = '1';
     }
     if (minValue && maxValue) {
