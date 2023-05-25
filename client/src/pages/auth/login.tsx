@@ -9,8 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const { currentUser, setCurrentUser } = useCurrentUser();
@@ -31,16 +30,7 @@ export default function Login() {
         if (status === res.status) {
           console.log("status", res);
           localStorage.setItem("token", res.data[0]);
-          toast.success("Amjilttai nevterlee", {
-            position: "top-right",
-            autoClose: 4000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+          toast.success("Амжилттай нэвтэрлээ 😃 ");
           axios
             .get(process.env.NEXT_PUBLIC_API_URL + "/currentUser", {
               headers: {
@@ -60,16 +50,7 @@ export default function Login() {
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Holbolt buruu baina", {
-          position: "top-right",
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.error("Холболт буруу байна 😥");
       });
   };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
