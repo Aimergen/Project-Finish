@@ -49,8 +49,7 @@ export default function Category({ data }: { data: IProduct }) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const { searchValue, setSearchValue } = useContext(MyContext);
-  const [minValue, setMinValue] = useState("");
-  const [maxValue, setMaxValue] = useState("");
+
   // const products = data;
   const [products, setProducts] = useState([]);
   const router = useRouter();
@@ -61,21 +60,19 @@ export default function Category({ data }: { data: IProduct }) {
     search = searchValue,
     page = 0,
     category = "",
-    min = minValue,
-    max = maxValue,
   } = query;
   const { addQuery } = useQuery();
   useEffect(() => {
     axios
       .get(
         process.env.NEXT_PUBLIC_API_URL +
-          `/products?limit=${limit}&search=${search}&ordering=${ordering}&category=${category}&minValue=${min}&maxValue=${max}`
+          `/products?limit=${limit}&search=${search}&ordering=${ordering}&category=${category}`
       )
       .then((res) => {
         setProducts(res.data);
       });
     console.log("aa");
-  }, [category, limit, ordering, search, minValue, maxValue]);
+  }, [category, limit, ordering, search]);
   // useEffect(() => {
   //   axios
   //     .get(process.env.NEXT_PUBLIC_API_URL + `/products?search=ki&limit=1`)
@@ -330,7 +327,7 @@ export default function Category({ data }: { data: IProduct }) {
                       )}
                     </Disclosure>
                   ))}
-                  <div className="w-full">
+                  {/* <div className="w-full">
                     <p className="text-center">Үнээр хайх</p>
                     <div className="grid grid-cols-2 gap-4">
                       <input
@@ -350,7 +347,7 @@ export default function Category({ data }: { data: IProduct }) {
                         required
                       />
                     </div>
-                    {/* <button
+                    <button
                       type="button"
                       onClick={() => {
                         addQuery({
@@ -361,8 +358,8 @@ export default function Category({ data }: { data: IProduct }) {
                       className="py-2 px-4 bg-[#4287f5] rounded-lg w-full my-2"
                     >
                       search
-                    </button> */}
-                  </div>
+                    </button>
+                  </div> */}
                 </form>
 
                 {/* Product grid */}

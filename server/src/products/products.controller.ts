@@ -65,8 +65,8 @@ export class ProductsController {
     @Query('skip') skip: number,
     @Query('search') search: string,
     @Query('category') category: string,
-    @Query('minValue') minValue: string | undefined,
-    @Query('maxValue') maxValue: string | undefined,
+    // @Query('minValue') minValue: string | undefined,
+    // @Query('maxValue') maxValue: string | undefined,
   ): Promise<Product[]> {
     let sort = '';
     switch (ordering) {
@@ -102,15 +102,15 @@ export class ProductsController {
     if (search) {
       condition.name = { $regex: new RegExp(`${search}`, 'i') };
     }
-    if (minValue.length == 0) {
-      minValue = '1';
-    }
-    if (minValue && maxValue) {
-      condition.price = {
-        $gte: minValue,
-        $lte: maxValue,
-      };
-    }
+    // if (minValue.length == 0) {
+    //   minValue = '1';
+    // }
+    // if (minValue && maxValue) {
+    //   condition.price = {
+    //     $gte: minValue,
+    //     $lte: maxValue,
+    //   };
+    // }
 
     return this.productsService.findAll(
       Number(limit),
