@@ -10,7 +10,7 @@ export default function ScrollTopButton() {
   }, []);
 
   const handleScroll = () => {
-    if (window.pageYOffset > 20) {
+    if (window.pageYOffset > 100) {
       setShowButton(true);
     } else {
       setShowButton(false);

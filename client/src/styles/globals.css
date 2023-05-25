@@ -291,3 +291,14 @@ body {
     opacity: 0;
   }
 }
+
+
+/* threemodel */
+.threeModel{
+  background-image: url('https://www.pcclean.io/wp-content/uploads/2021/11/8606801088821501644.jpg');
+  /* background-color: #8083c9; */
+  background-position: center;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

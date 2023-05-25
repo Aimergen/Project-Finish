@@ -21,43 +21,43 @@ export default function Sponser() {
         <div className={styles.marquee}>
           <div className={styles.marquee__group}>
             <div>
-              <DiJqueryLogo size={40} className="text-[#3AB4F2]" />
+              <DiJqueryLogo size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoApple size={40} className="text-[#3AB4F2]" />
+              <IoLogoApple size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoChrome size={40} className="text-[#3AB4F2]" />
+              <IoLogoChrome size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoGithub size={40} className="text-[#3AB4F2]" />
+              <IoLogoGithub size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoLinkedin size={40} className="text-[#3AB4F2]" />
+              <IoLogoLinkedin size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoSkype size={40} className="text-[#3AB4F2]" />
+              <IoLogoSkype size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
           </div>
 
           <div aria-hidden="true" className={styles.marquee__group}>
             <div>
-              <IoLogoSass size={40} className="text-[#3AB4F2]" />
+              <IoLogoSass size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoWindows size={40} className="text-[#3AB4F2]" />
+              <IoLogoWindows size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoDropbox size={40} className="text-[#3AB4F2]" />
+              <IoLogoDropbox size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoPinterest size={40} className="text-[#3AB4F2]" />
+              <IoLogoPinterest size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoPlaystation size={40} className="text-[#3AB4F2]" />
+              <IoLogoPlaystation size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoGoogle size={40} className="text-[#3AB4F2]" />
+              <IoLogoGoogle size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
           </div>
         </div>
@@ -66,43 +66,43 @@ export default function Sponser() {
         <div className={styles.marquee2}>
           <div className={styles.marquee__group2}>
             <div>
-              <DiJqueryLogo size={40} className="text-[#3AB4F2]" />
+              <DiJqueryLogo size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoApple size={40} className="text-[#3AB4F2]" />
+              <IoLogoApple size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoChrome size={40} className="text-[#3AB4F2]" />
+              <IoLogoChrome size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoGithub size={40} className="text-[#3AB4F2]" />
+              <IoLogoGithub size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoLinkedin size={40} className="text-[#3AB4F2]" />
+              <IoLogoLinkedin size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoSkype size={40} className="text-[#3AB4F2]" />
+              <IoLogoSkype size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
           </div>
 
           <div aria-hidden="true" className={styles.marquee__group2}>
             <div>
-              <IoLogoSass size={40} className="text-[#3AB4F2]" />
+              <IoLogoSass size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoWindows size={40} className="text-[#3AB4F2]" />
+              <IoLogoWindows size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoDropbox size={40} className="text-[#3AB4F2]" />
+              <IoLogoDropbox size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoPinterest size={40} className="text-[#3AB4F2]" />
+              <IoLogoPinterest size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoPlaystation size={40} className="text-[#3AB4F2]" />
+              <IoLogoPlaystation size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
             <div>
-              <IoLogoGoogle size={40} className="text-[#3AB4F2]" />
+              <IoLogoGoogle size={40} className="text-[rgba(0,0,0,.3)]" />
             </div>
           </div>
         </div>

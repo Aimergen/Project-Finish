@@ -252,7 +252,7 @@ export default function Order({ data }: { data: any }) {
                       htmlFor="category"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      haygiin ner
+                      Хаягийн нэр
                     </label>
                     <select
                       onChange={(e: any) => handleChange(e)}

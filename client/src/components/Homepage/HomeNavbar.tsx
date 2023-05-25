@@ -108,7 +108,7 @@ export default function HomeNavbar() {
                     id="text"
                     type="text"
                     rightIcon={HiSearch}
-                    placeholder="haih"
+                    placeholder="search..."
                     required={true}
                     className="w-full mx-3 md:w-96 max-sm:hidden text-black"
                     value={searchValue}
