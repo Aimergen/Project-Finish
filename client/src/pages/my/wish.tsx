@@ -13,6 +13,9 @@ const Wish = () => {
   if (!currentUser) {
     return <MyModal />;
   }
+  if (!localStorage.getItem("token")) {
+    return <MyModal />;
+  }
 
   const [myWishlist, setMyWhishlist] = useState<IProduct[]>();
   useEffect(() => {

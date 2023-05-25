@@ -16,6 +16,9 @@ export default function Example() {
   if (!currentUser) {
     return <MyModal />;
   }
+  if (!localStorage.getItem("token")) {
+    return <MyModal />;
+  }
 
   const router = useRouter();
   const [imageUrl, setImageUrl] = useState("");

@@ -49,6 +49,9 @@ export default function Order({ data }: { data: any }) {
   if (!currentUser) {
     return <MyModal />;
   }
+  if (!localStorage.getItem("token")) {
+    return <MyModal />;
+  }
   const router = useRouter();
   const order = data;
   const [addOrder, setAddOrder] = useState({
