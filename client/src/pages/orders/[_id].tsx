@@ -47,9 +47,9 @@ interface Props {
 export default function Order({ data }: { data: any }) {
   const { currentUser } = useCurrentUser();
   if (!currentUser) {
-    return <MyModal/>;
+    return <MyModal />;
   }
-  const router = useRouter()
+  const router = useRouter();
   const order = data;
   const [addOrder, setAddOrder] = useState({
     firstName: "",
@@ -66,9 +66,7 @@ export default function Order({ data }: { data: any }) {
     productId: order?._id,
     status: true,
   });
-  const [orderPrice, setOrderPrice] = useState(
-    order.price  + 5000
-  );
+  const [orderPrice, setOrderPrice] = useState(order.price + 5000);
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -77,12 +75,12 @@ export default function Order({ data }: { data: any }) {
       .post(process.env.NEXT_PUBLIC_API_URL + "/orders/add", addOrder)
       .then((res) => {
         console.log(res.data);
-        toast.success('захиалга амжилттай хийгдлээ');
-        router.push(`/categories`)
+        toast.success("захиалга амжилттай хийгдлээ");
+        router.push(`/categories`);
       })
       .catch((err) => {
         console.log(err);
-        toast.error('захиалга хийхэд алдаа гарлаа')
+        toast.error("захиалга хийхэд алдаа гарлаа");
       });
   };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -101,7 +99,7 @@ export default function Order({ data }: { data: any }) {
 
   return (
     <>
-      <Layout>
+      <Layout title="ecommerce" description="description">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="col-span-2">
             <form action="">

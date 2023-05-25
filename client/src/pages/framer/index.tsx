@@ -51,7 +51,7 @@ export default function App() {
 
   return (
     <>
-      <Layout>
+      <Layout title="scroll" description="description">
         {[1, 2].map((image) => (
           <>
             <Zurag id={image} key={image} />

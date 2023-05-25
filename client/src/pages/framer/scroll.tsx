@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function Scroll() {
   return (
     <>
-      <Layout>
+      <Layout title="ecommerce" description="description">
         <h2 className="">nemelt medeelel</h2>
         <div className="grid grid-cols-2">
           <Image

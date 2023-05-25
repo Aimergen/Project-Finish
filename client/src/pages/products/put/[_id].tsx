@@ -92,7 +92,7 @@ export default function update() {
   };
 
   return (
-    <Layout>
+    <Layout title="ecommerce" description="description">
       <div className="container max-w-xl">
         <form onSubmit={handleSubmit}>
           <div className=" gap-5">
