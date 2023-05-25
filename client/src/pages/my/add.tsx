@@ -8,6 +8,7 @@ import { IOption } from "@/interfaces/product";
 import { toast } from "react-toastify";
 import MyModal from "@/components/Modal";
 import "react-toastify/dist/ReactToastify.css";
+import Aside from "./profile";
 
 export default function Example() {
   const { currentUser } = useCurrentUser();
@@ -85,8 +86,9 @@ export default function Example() {
   };
 
   return (
-    <Layout>
-      <div className="container max-w-xl">
+    // <Layout>
+      <Aside>
+      <div className="container max-w-xl bg-white w-full p-3 rounded-lg">
         <form onSubmit={handleSubmit}>
           <div className=" gap-5">
             <div
@@ -336,6 +338,7 @@ export default function Example() {
           </div>
         </form>
       </div>
-    </Layout>
+      </Aside>
+    // {/* </Layout> */}
   );
 }

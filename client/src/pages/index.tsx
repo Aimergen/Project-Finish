@@ -16,6 +16,7 @@ import Reason from "@/components/Reason";
 import Loading from "@/components/Loading/Loading";
 import Layout from "@/components/Layout";
 import Spinner from "@/components/Spinner";
+import Sponser from "@/components/sponser/Sponser";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
@@ -64,18 +65,10 @@ export default function Home({ data }: { data: IProduct[] }) {
             ))}
           </div>
 
-          {/* <button
-            type="button"
-            onClick={() => {
-              setLimitCount(1000);
-            }}
-            className="flex justify-center"
-          >
-            bugdiig uzeh
-          </button> */}
         </div>
         <ImageCard />
         <Reason />
+        <Sponser/>
         {/* </div>
       <Footer /> */}
       </Layout>
