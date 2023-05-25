@@ -29,6 +29,7 @@ import Products from "./pages/Products";
 import Add from "./pages/Add";
 import Put from "./pages/Put";
 import Login from "./pages/Login";
+import Request from "./pages/Request";
 
 const App = () => {
   const {
@@ -115,6 +116,7 @@ const App = () => {
                   <Route path="/products" element={<Products />} />
                   <Route path="/products/add" element={<Add />} />
                   <Route path="/products/put/:id" element={<Put />} />
+                  <Route path="/request" element={<Request />} />
                   <Route path="/login" element={<Login />} />
                   {/* apps  */}
                   <Route path="/kanban" element={<Kanban />} />

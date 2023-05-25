@@ -17,6 +17,7 @@ import Loading from "@/components/Loading/Loading";
 import Layout from "@/components/Layout";
 import Spinner from "@/components/Spinner";
 import Sponser from "@/components/sponser/Sponser";
+import ScrollTopButton from "@/components/ScrollTopButton";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
@@ -48,7 +49,7 @@ export default function Home({ data }: { data: IProduct[] }) {
     <Loading />
   ) : (
     <>
-      <Layout>
+      <Layout title="Ecommerce" description="description">
         <Spinner />
 
         {/* <HomeNavbar />
@@ -64,13 +65,13 @@ export default function Home({ data }: { data: IProduct[] }) {
               <ProductCard product={product} key={product._id} />
             ))}
           </div>
-
         </div>
         <ImageCard />
         <Reason />
-        <Sponser/>
+        <Sponser />
         {/* </div>
       <Footer /> */}
+        <ScrollTopButton />
       </Layout>
     </>
   );

@@ -10,6 +10,6 @@ export class CreateProductDto {
   streetAddress: string;
   productImageSrc: string;
   userId: string;
-  statis: boolean;
+  status: boolean;
   productState: string;
 }

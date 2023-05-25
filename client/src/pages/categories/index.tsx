@@ -49,6 +49,8 @@ export default function Category({ data }: { data: IProduct }) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const { searchValue, setSearchValue } = useContext(MyContext);
+  const [minValue, setMinValue] = useState("");
+  const [maxValue, setMaxValue] = useState("");
   // const products = data;
   const [products, setProducts] = useState([]);
   const router = useRouter();
@@ -59,19 +61,21 @@ export default function Category({ data }: { data: IProduct }) {
     search = searchValue,
     page = 0,
     category = "",
+    min = minValue,
+    max = maxValue,
   } = query;
   const { addQuery } = useQuery();
   useEffect(() => {
     axios
       .get(
         process.env.NEXT_PUBLIC_API_URL +
-          `/products?limit=${limit}&search=${search}&ordering=${ordering}&category=${category}`
+          `/products?limit=${limit}&search=${search}&ordering=${ordering}&category=${category}&minValue=${min}&maxValue=${max}`
       )
       .then((res) => {
         setProducts(res.data);
       });
     console.log("aa");
-  }, [category, limit, ordering, search]);
+  }, [category, limit, ordering, search, minValue, maxValue]);
   // useEffect(() => {
   //   axios
   //     .get(process.env.NEXT_PUBLIC_API_URL + `/products?search=ki&limit=1`)
@@ -85,9 +89,8 @@ export default function Category({ data }: { data: IProduct }) {
       setCategories(res.data);
     });
   }, []);
-
   return (
-    <Layout>
+    <Layout title={"Category"} description={"description"}>
       <div className="bg-white">
         <div>
           {/* Mobile filter dialog */}
@@ -327,6 +330,39 @@ export default function Category({ data }: { data: IProduct }) {
                       )}
                     </Disclosure>
                   ))}
+                  <div className="w-full">
+                    <p className="text-center">Үнээр хайх</p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <input
+                        type="number"
+                        className="rounded-lg"
+                        onChange={(e): void => {
+                          setMinValue(e.target.value);
+                        }}
+                        required
+                      />
+                      <input
+                        type="number"
+                        className="rounded-lg"
+                        onChange={(e): void => {
+                          setMaxValue(e.target.value);
+                        }}
+                        required
+                      />
+                    </div>
+                    {/* <button
+                      type="button"
+                      onClick={() => {
+                        addQuery({
+                          minValue: minValue,
+                          maxValue: maxValue,
+                        });
+                      }}
+                      className="py-2 px-4 bg-[#4287f5] rounded-lg w-full my-2"
+                    >
+                      search
+                    </button> */}
+                  </div>
                 </form>
 
                 {/* Product grid */}

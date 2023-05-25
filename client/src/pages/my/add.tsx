@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import MyModal from "@/components/Modal";
 import "react-toastify/dist/ReactToastify.css";
 import Aside from "./profile";
+import { useRouter } from "next/router";
 
 export default function Example() {
   const { currentUser } = useCurrentUser();
@@ -16,6 +17,7 @@ export default function Example() {
     return <MyModal />;
   }
 
+  const router = useRouter();
   const [imageUrl, setImageUrl] = useState("");
   const [category, setCategory] = useState([]);
   const [subCategories, setSubCategories] = useState<IOption[]>([]);
@@ -36,7 +38,7 @@ export default function Example() {
     phoneNumber: "",
     price: 0,
     userId: currentUser?._id,
-    status: true,
+    status: false,
     productState: "",
   });
   const uploadImg = (e: any) => {
@@ -63,11 +65,12 @@ export default function Example() {
       })
       .then((res) => {
         console.log(res.data);
-        toast.success("amjilttai nemegdlee");
+        toast.success("Амжилттай нэмэгдлээ");
+        router.push("/my/info");
       })
       .catch((err) => {
         console.log(err);
-        toast.error("baraa nemehed aldaa garlaa");
+        toast.error("Бараа нэмэхэд алдаа гарлаа");
       });
   };
 
@@ -87,54 +90,55 @@ export default function Example() {
 
   return (
     // <Layout>
-      <Aside>
-      <div className="container max-w-xl bg-white w-full p-3 rounded-lg">
-        <form onSubmit={handleSubmit}>
-          <div className=" gap-5">
-            <div
+    <Aside>
+      <div className=" bg-white w-full p-3 rounded-lg">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3"
+        >
+          <div
+            style={{
+              backgroundColor: "#ccc",
+              overflow: "hidden",
+              border: "1px solid #f0f0f0",
+              position: "relative",
+            }}
+            className="aspect-[5/5]"
+          >
+            <Image
               style={{
                 width: "100%",
                 height: "100%",
-                backgroundColor: "#ccc",
-                overflow: "hidden",
-                border: "1px solid #f0f0f0",
-                position: "relative",
+                objectFit: "cover",
               }}
-            >
-              <Image
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-                width={1000}
-                height={100}
-                src={imageUrl || "/images/placeholder.png"}
-                alt="add product image"
-              />
-              <input
-                type="file"
-                onChange={uploadImg}
-                multiple
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  top: 0,
-                  opacity: 0,
-                  cursor: "pointer",
-                }}
-              />
-            </div>
-
+              width={1000}
+              height={100}
+              src={imageUrl || "/images/placeholder.png"}
+              alt="add product image"
+            />
+            <input
+              type="file"
+              onChange={uploadImg}
+              multiple
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: 0,
+                top: 0,
+                opacity: 0,
+                cursor: "pointer",
+              }}
+            />
+          </div>
+          <div className="w-full">
             <label
               htmlFor="category"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              category
+              Ангилал
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <select
                 required
                 onChange={(e: any) => handleChange(e)}
@@ -154,9 +158,9 @@ export default function Example() {
               htmlFor="option"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              second category
+              Дэд ангилал
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <select
                 required
                 onChange={(e: any) => handleChange(e)}
@@ -177,9 +181,9 @@ export default function Example() {
               htmlFor="productState"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              product state
+              Барааны төлөв
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <select
                 required
                 onChange={(e: any) => handleChange(e)}
@@ -189,18 +193,18 @@ export default function Example() {
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               >
                 <option value="songoh">сонгох</option>
-                <option value="100%">shine (100%)</option>
-                <option value="80%">tseverhen hereglesen (80%+)</option>
-                <option value="60%">bolomjiin(60%+)</option>
+                <option value="100%">Шинэ (100%)</option>
+                <option value="80%">Цэвэрхэн хэрэглэсэн (80%+)</option>
+                <option value="60%">Боломжийн (60%+)</option>
               </select>
             </div>
             <label
               htmlFor="street-address"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Brand
+              Брэнд
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <input
                 required
                 onChange={(e) => handleChange(e)}
@@ -215,9 +219,9 @@ export default function Example() {
               htmlFor="street-address"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              hemjee
+              Хэмжээ
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <input
                 required
                 onChange={(e) => handleChange(e)}
@@ -232,9 +236,9 @@ export default function Example() {
               htmlFor="street-address"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Baraanii ner
+              Барааны нэр
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <input
                 required
                 onChange={(e) => handleChange(e)}
@@ -249,9 +253,9 @@ export default function Example() {
               htmlFor="about"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              About
+              Тайлбар
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <input
                 required
                 onChange={(e) => handleChange(e)}
@@ -265,9 +269,9 @@ export default function Example() {
               htmlFor="street-address"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              hayg
+              Хаяг
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <input
                 required
                 onChange={(e) => handleChange(e)}
@@ -282,9 +286,9 @@ export default function Example() {
               htmlFor="street-address"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              utasnii dugaar
+              Утасний дугаар
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <input
                 required
                 onChange={(e) => handleChange(e)}
@@ -299,9 +303,9 @@ export default function Example() {
               htmlFor="street-address"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              une
+              Үнэ
             </label>
-            <div className="mt-2">
+            <div className="mt-2 mb-5">
               <input
                 required
                 onChange={(e) => handleChange(e)}
@@ -312,7 +316,7 @@ export default function Example() {
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               <p>
-                site deer zaragdah une:{" "}
+                Website дээр зарагдах үнэ:{" "}
                 <span className="font-bold">
                   {Number(addProduct.price) + Number(addProduct.price / 10)}{" "}
                 </span>
@@ -326,19 +330,19 @@ export default function Example() {
                 type="button"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
-                Cancel
+                Цуцлах
               </button>
               <button
                 type="submit"
                 className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                baraa nemeh
+                Бараа нэмэх
               </button>
             </div>
           </div>
         </form>
       </div>
-      </Aside>
+    </Aside>
     // {/* </Layout> */}
   );
 }

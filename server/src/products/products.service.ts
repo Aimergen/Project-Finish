@@ -70,6 +70,24 @@ export class ProductsService {
 
     return updatedProduct;
   }
+  async statusApprove(
+    id: string,
+    updateProductDto: UpdateProductDto,
+  ): Promise<Product> {
+    const updatedProduct = await this.ProductModel.findByIdAndUpdate(
+      id,
+      updateProductDto,
+      {
+        new: true, // Return the updated document
+      },
+    ).exec();
+
+    if (!updatedProduct) {
+      throw new NotFoundException(`Product with ID ${id} not found`);
+    }
+
+    return updatedProduct;
+  }
 
   async remove(_id: string) {
     return await this.ProductModel.findByIdAndRemove(_id);

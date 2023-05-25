@@ -14,17 +14,17 @@ import {
   Inject,
 } from "@syncfusion/ej2-react-grids";
 
-import { contextMenuItems, productsGrid } from "../data/dummy";
+import { contextMenuItems, requestGrid } from "../data/dummy";
 import { Header } from "../components";
 import { useCrud } from "../hooks/useCrud";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Products = () => {
+const Request = () => {
   const [products, setProduct] = useState();
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_API_URL + "/products/true/true")
+      .get(process.env.REACT_APP_API_URL + "/products/false/false")
       .then((res) => {
         setProduct(res.data);
       })
@@ -37,12 +37,7 @@ const Products = () => {
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <div className="flex items-center justify-between">
-        <Header category="Page" title="Products" />
-        <Link to="/products/add">
-          <button className="bg-[rgba(25,100,255,7)] text-white rounded-lg py-2 px-6">
-            add
-          </button>
-        </Link>
+        <Header category="Page" title="Request" />
       </div>
       <GridComponent
         id="gridcomp"
@@ -56,7 +51,7 @@ const Products = () => {
       >
         <ColumnsDirective>
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          {productsGrid.map((item, index) => (
+          {requestGrid.map((item, index) => (
             <ColumnDirective key={index} {...item} />
           ))}
           {/* <ColumnDirective
@@ -89,7 +84,7 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Request;
 // const Products = () => {
 //   const { items: products, deleteItem, updateItem } = useCrud("products/true/true");
 

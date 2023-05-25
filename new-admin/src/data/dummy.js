@@ -26,7 +26,11 @@ import {
 import { BiColorFill } from "react-icons/bi";
 import { IoMdContacts } from "react-icons/io";
 import { RiContactsLine, RiStockLine } from "react-icons/ri";
-import { MdEdit, MdOutlineSupervisorAccount } from "react-icons/md";
+import {
+  MdEdit,
+  MdOutlineAddCircle,
+  MdOutlineSupervisorAccount,
+} from "react-icons/md";
 import { HiOutlineRefresh } from "react-icons/hi";
 import { TiTick } from "react-icons/ti";
 import { GiLouvrePyramid } from "react-icons/gi";
@@ -81,14 +85,22 @@ export const handleDelete = (id) => {
       console.error("Error deleting product:", error);
     });
 };
+export const handleApprove = (id) => {
+  axios
+    .patch(process.env.REACT_APP_API_URL + `/products/status/${id}`, {
+      status: true,
+    })
+    .then((response) => {
+      toast.success("амжилттай нэмэгдлээ");
 
-// export const handleUpdate = (id) => {
-//   // Perform update operation based on the ID
-//   // For example:
-//   const updatedItem = ordersData.find((item) => item._id === id);
-//   // Perform the update logic or navigate to the update page with the item data
-//   console.log("Updating item:", updatedItem);
-// };
+      console.log("Product deleted successfully:", response);
+    })
+    .catch((error) => {
+      toast.success("нэмэхэд алдаа гарлаа");
+      console.error("Error deleting product:", error);
+    });
+};
+
 const updateButton = (props) => {
   return (
     <div className="">
@@ -97,6 +109,18 @@ const updateButton = (props) => {
           <MdEdit size={20} />
         </button>
       </Link>
+    </div>
+  );
+};
+const ApproveButton = (props) => {
+  return (
+    <div className="">
+      <button
+        className="btn-delete text-green-500"
+        onClick={() => handleApprove(props._id)}
+      >
+        <MdOutlineAddCircle size={20} />
+      </button>
     </div>
   );
 };
@@ -601,6 +625,10 @@ export const links = [
         name: "products",
         icon: <AiOutlineShoppingCart />,
       },
+      {
+        name: "request",
+        icon: <AiOutlineShoppingCart />,
+      },
     ],
   },
   {
@@ -1006,6 +1034,67 @@ export const ordersGrid = [
     field: "phoneNumber",
     headerText: "phoneNumber",
     width: "150",
+    textAlign: "Center",
+  },
+];
+export const requestGrid = [
+  {
+    headerText: "Image",
+    template: gridOrderImage,
+    textAlign: "Center",
+    width: "120",
+  },
+  {
+    field: "productId",
+    headerText: "Item id",
+    width: "150",
+    editType: "dropdownedit",
+    textAlign: "Center",
+  },
+  {
+    field: "firstName",
+    headerText: "Customer Name",
+    width: "150",
+    textAlign: "Center",
+  },
+  {
+    field: "price",
+    headerText: "Total Amount",
+    format: "C2",
+    textAlign: "Center",
+    editType: "numericedit",
+    width: "150",
+  },
+  {
+    headerText: "status",
+    // template: gridOrderStatus,
+    field: "status",
+    textAlign: "Center",
+    width: "120",
+  },
+  {
+    field: "_id",
+    headerText: "Order ID",
+    width: "120",
+    textAlign: "Center",
+  },
+
+  {
+    field: "phoneNumber",
+    headerText: "phoneNumber",
+    width: "150",
+    textAlign: "Center",
+  },
+  {
+    headerText: "Actions",
+    template: ApproveButton,
+    width: "60",
+    textAlign: "Center",
+  },
+  {
+    headerText: "Actions",
+    template: deleteButton,
+    width: "60",
     textAlign: "Center",
   },
 ];
