@@ -5,6 +5,7 @@ import { RecoilRoot } from "recoil";
 import { Searchcontext } from "@/components/context/Searchcontext";
 import { ToastContainer } from "react-toastify";
 import FacebookCustomerChat from "@/components/FacebookCustomerChat";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +13,18 @@ export default function App({ Component, pageProps }: AppProps) {
       <Searchcontext>
         <Component {...pageProps} />
         <FacebookCustomerChat />
-        <ToastContainer />
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </Searchcontext>
     </CurrentUserProvider>
   );
